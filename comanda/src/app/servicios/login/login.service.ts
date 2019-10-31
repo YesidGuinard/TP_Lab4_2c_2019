@@ -13,4 +13,13 @@ export class LoginService {
     return this.miHttpService.httpPost0('empleado/login/', empleado);
   }
 
+  RegistrarEmpleado(empleado: Empleado) {
+    return this.miHttpService.httpPost0('empleado/alta/', empleado);
+  }
+
+  ObtenerTiposDeEmpleados() {
+    return this.miHttpService.httpGet0('tiposDeEmpleado/');
+  }
+
 }
+

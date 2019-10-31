@@ -1,0 +1,19 @@
+.modal {
+    position: fixed; 
+    width: 275px; 
+    height: 300px; 
+    top: 0; 
+    left: 0; 
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    font-weight: normal; 
+    border: #333333 3px solid; 
+    background-color: #FAFAFA; 
+    color: #000000; 
+    display:none;
+}
+
+.input {
+    margin-top: 3%;
+    margin-left: 3%;
+}

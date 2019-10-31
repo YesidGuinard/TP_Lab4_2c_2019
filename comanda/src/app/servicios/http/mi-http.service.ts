@@ -16,4 +16,9 @@ export class MiHttpService {
     return this.http.post(this.url + metodo, JSON.stringify(empleado), {responseType: 'text'})
     .pipe(respuesta => respuesta)
   }
+
+  public httpGet0( metodo: string): Observable<any> {
+    return this.http.get(this.url + metodo)
+    .pipe(respuesta => respuesta)
+  }
 }
