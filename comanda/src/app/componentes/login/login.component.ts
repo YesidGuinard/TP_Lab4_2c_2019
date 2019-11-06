@@ -13,14 +13,18 @@ import  Swal  from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   empleado: Empleado;
+  nuevoUsuario: Empleado; 
   respuesta: any;
   listaTiposDeEmpleado: Array<any>;
+  habilitarBotonRegistro: boolean = false; 
 
   constructor(private loginService: LoginService, private router: Router) {
     this.empleado = new Empleado(); 
     this.empleado.usuario = "";
     this.empleado.clave = "";
-    this.empleado.tipoEmpleado = "";
+    this.nuevoUsuario = new Empleado();
+    this.nuevoUsuario.usuario = "";
+    this.nuevoUsuario.clave = "";
   }
 
   cargarUsuario(usuario){
@@ -53,15 +57,16 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(){
-    console.log(this.respuesta);
+    
     if(this.empleado.usuario != "" && this.empleado.clave != "")
     {
       this.loginService.LoginEmpleado(this.empleado).subscribe(respuesta => {
-        this.respuesta = JSON.parse(respuesta);
+        this.respuesta = respuesta;
+        console.log(respuesta);
         if(this.respuesta.Estado == "Ok") {
           localStorage.setItem('token', this.respuesta.Token);
           this.router.navigate(['/principal']); 
-        }
+        } 
         else
           this.alertaUsuarioInvalido();
       });
@@ -79,20 +84,36 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  alertaUsuarioRegistrado() {
+    Swal.fire({ 
+      title: 'Registro de usuario',
+      text: "Usuario registrado correctamente",
+      type: 'success',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok'
+    })
+  }
+
   registrarse() {
     console.log(this.respuesta);
-    if(this.empleado.usuario != "" && this.empleado.clave != "")
+    if(this.nuevoUsuario.usuario != "" && this.nuevoUsuario.clave != "")
     {
-      this.loginService.RegistrarEmpleado(this.empleado).subscribe(respuesta => {debugger
+      this.loginService.RegistrarEmpleado(this.nuevoUsuario).subscribe(respuesta => {
         this.respuesta = JSON.parse(respuesta);
         if(this.respuesta.Estado == "Ok") {
-          
+          this.alertaUsuarioRegistrado();
         }
         else
           this.alertaUsuarioInvalido();
       });
     }
+  }x
 
+  resolved(captchaResponse: string) {
+    // console.log(`Resolved captcha with response: ${captchaResponse}`);
+    if(captchaResponse)
+      this.habilitarBotonRegistro = true; 
   }
 
   mostrarVentana() {
