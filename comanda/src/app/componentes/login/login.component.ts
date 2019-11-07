@@ -53,6 +53,10 @@ export class LoginComponent implements OnInit {
           this.empleado.usuario = "pastelero";
           this.empleado.clave = "pastelero";
       break;
+      case 'cliente':
+        this.empleado.usuario = "cliente";
+        this.empleado.clave = "cliente";
+    break;
     }
   }
 

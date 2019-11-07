@@ -8,12 +8,14 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AuthGuard } from './auth.guard';
+import { ClienteComponent } from './componentes/cliente/cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
