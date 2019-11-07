@@ -21,5 +21,9 @@ export class LoginService {
     return this.miHttpService.httpGet0('tiposDeEmpleado/');
   }
 
+  loggedIn(){
+    return !!localStorage.getItem('token');
+  }
+
 }
 

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     HttpClientModule,
     RecaptchaModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

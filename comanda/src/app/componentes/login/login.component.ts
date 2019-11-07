@@ -65,7 +65,21 @@ export class LoginComponent implements OnInit {
         console.log(respuesta);
         if(this.respuesta.Estado == "Ok") {
           localStorage.setItem('token', this.respuesta.Token);
-          this.router.navigate(['/principal']); 
+          
+          if(respuesta.TipoEmpleado == "socio")
+            this.router.navigate(['/principal']);
+          else if (respuesta.TipoEmpleado == "mozo")     
+            this.router.navigate(['/mozo']);
+          else if (respuesta.TipoEmpleado == "cocinero")
+            this.router.navigate(['/cocinero']);
+          else if (respuesta.TipoEmpleado == "bartender")
+            this.router.navigate(['/bartender']);
+          else if (respuesta.TipoEmpleado == "cervecero")
+            this.router.navigate(['/cervecero'])
+          else if (respuesta.TipoEmpleado == "pastelero")
+            this.router.navigate(['/pastelero'])
+          else if (respuesta.TipoEmpleado == "cliente")
+            this.router.navigate(['/cliente'])    
         } 
         else
           this.alertaUsuarioInvalido();
