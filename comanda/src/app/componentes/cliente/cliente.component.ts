@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pedidos.service';
+import { Pedido } from '../../clases/pedido';
+import { Codigo } from '../../clases/codigo';
 
 @Component({
   selector: 'app-cliente',
@@ -8,42 +10,15 @@ import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pe
   providers: [ClientePedidosService]
 })
 export class ClienteComponent implements OnInit {
+ 
+  nombreCliente: string; 
+  codigosDePedido: Array<Codigo>;
 
-  productosCocina: Array<any>; 
-  productoCocinaSeleccionado: any;
-
-  vinos: Array<any>;
-  vinoSeleccionado: any; 
-
-  cervezas: Array<any>;
-  cervezaSeleccionada: any; 
-
-  postres: Array<any>;
-  postreSeleccionado: any; 
-
-  constructor(private clienteService: ClientePedidosService) { }
-
-  enviarPlatoPrincipal() {
-    console.log(this.productoCocinaSeleccionado);
-  }
-
-  enviarVino() {
-    console.log(this.vinoSeleccionado);
-  }
-
-  enviarCerveza() {
-    console.log(this.cervezaSeleccionada);
-  }
-
-  enviarPostre() {
-    console.log(this.postreSeleccionado);
-  }
+  constructor(private clienteService: ClientePedidosService) {
+    this.codigosDePedido = new Array<any>();
+   }
 
   ngOnInit() {
-
-    this.clienteService.getProductosCocina().subscribe(res => this.productosCocina = res);
-    this.clienteService.getVinos().subscribe(res => this.vinos = res);      
-    this.clienteService.getCervezas().subscribe(res => this.cervezas = res);    
-    this.clienteService.getPostres().subscribe(res => this.postres = res);
+    this.nombreCliente = localStorage.getItem('usuario');
   }
 }

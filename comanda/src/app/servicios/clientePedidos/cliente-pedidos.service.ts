@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MiHttpService } from '../http/mi-http.service';
-import { Empleado } from '../../clases/empleado';
+import { Pedido } from '../../clases/pedido';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,9 @@ export class ClientePedidosService {
 
   getPostres(){
     return this.miHttpService.httpGet0('pedido/postre/');
+  }
+
+  generarPedido(pedido: Pedido) {
+    return this.miHttpService.httpPost1('pedido/cargar/', pedido);
   }
 }

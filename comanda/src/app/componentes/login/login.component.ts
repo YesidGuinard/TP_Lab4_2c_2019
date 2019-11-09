@@ -83,7 +83,10 @@ export class LoginComponent implements OnInit {
           else if (respuesta.TipoEmpleado == "pastelero")
             this.router.navigate(['/pastelero'])
           else if (respuesta.TipoEmpleado == "cliente")
-            this.router.navigate(['/cliente'])    
+          {
+            localStorage.setItem('usuario', respuesta.Usuario);
+            this.router.navigate(['/cliente'])   
+          }             
         } 
         else
           this.alertaUsuarioInvalido();

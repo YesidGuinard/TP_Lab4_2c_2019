@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { Empleado } from '../../clases/empleado';
+import { Pedido } from '../../clases/pedido';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -15,6 +16,11 @@ export class MiHttpService {
   
   public httpPost0( metodo: string, empleado: Empleado): Observable<any> {
     return this.http.post(this.url + metodo, JSON.stringify(empleado), {responseType: 'json'})
+    .pipe(respuesta => respuesta)
+  }
+
+  public httpPost1( metodo: string, pedido: Pedido): Observable<any> {
+    return this.http.post(this.url + metodo, JSON.stringify(pedido), {responseType: 'json'})
     .pipe(respuesta => respuesta)
   }
 

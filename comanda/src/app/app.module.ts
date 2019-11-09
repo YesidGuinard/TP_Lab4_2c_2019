@@ -9,13 +9,15 @@ import { PrincipalComponent } from './componentes/principal/principal.component'
 import { RecaptchaModule } from 'ng-recaptcha';
 import { AuthGuard } from './auth.guard';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { GenerarPedidoComponent } from './componentes/generar-pedido/generar-pedido.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    ClienteComponent
+    ClienteComponent,
+    GenerarPedidoComponent
   ],
   imports: [
     BrowserModule,

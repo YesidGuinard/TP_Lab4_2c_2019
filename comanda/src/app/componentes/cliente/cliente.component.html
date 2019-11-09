@@ -19,12 +19,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </a>
     <img src="../../../assets/clientes.jpg" style="width:45%;" class="w3-round"><br><br>
     <h4><b>Tipo de usuario: Cliente</b></h4>
+    <h4><b>Nombre de usuario: {{nombreCliente}}</b></h4>
   </div>
   <div class="w3-bar-block">
-    <a href="cliente#mesa" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>MESA</a>
-    <a href="cliente#pedido" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PEDIDO</a> 
+    <a href="cliente#mesa" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>MESA</a>
+    <a href="cliente#pedido" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PEDIDO</a> 
     <a href="cliente#estado"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ESTADO</a> 
-    <a href="cliente#encuesta" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ENCUESTA</a>
+    <a href="cliente#encuesta" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ENCUESTA</a>
   </div>
 </nav>
 
@@ -36,7 +37,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   
   <!-- Header -->
-    <header id="pedido">
+    <header id="mesa">
         <div class="w3-container">
             <h3><b>Mesa</b></h3>
         </div>
@@ -51,83 +52,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
   
   <!-- Pedido-->
-  <div class="container ">
-    <h3><b>Pedido</b></h3>
-    <div class="row">
-      <div class="col-4">
-          <h4>Elegí tu plato principal</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-4">
-        <select class="custom-select" [(ngModel)] = "productoCocinaSeleccionado" name="productoCocinaSeleccionado">
-          <option hidden value="0" selected = "selected" disabled>Seleccione plato principal</option>
-          <option *ngFor = "let prod of productosCocina" value = {{prod.id}}>{{prod.nombre}}</option>
-        </select>
-      </div>
-      <div class="col-4">
-          <button class="btn btn-primary" (click) = "enviarPlatoPrincipal()"> Guardar</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="container ">
-      <div class="row">
-        <div class="col-4">
-            <h4>¿Vas a tomar vino? Elegí el que más te guste: </h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-            <select class="custom-select" [(ngModel)] = "vinoSeleccionado" name="vinoSeleccionado">
-                <option hidden value="0" selected = "selected" disabled>Seleccione vino</option>
-                <option *ngFor = "let vino of vinos" value = {{vino.id}}>{{vino.nombre}}</option>
-              </select>
-        </div>
-        <div class="col-4">
-            <button class="btn btn-primary" (click) = "enviarVino()"> Guardar</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="container ">
-        <div class="row">
-          <div class="col-4">
-              <h4>¿Preferís una cerveza artesanal? Elegí la que más te guste: </h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-              <select class="custom-select" [(ngModel)] = "cervezaSeleccionada" name="cervezaSeleccionada">
-                  <option hidden value="0" selected = "selected" disabled>Seleccione cerveza</option>
-                  <option *ngFor = "let cerv of cervezas" value = {{cerv.id}}>{{cerv.nombre}}</option>
-                </select>
-          </div>
-          <div class="col-4">
-              <button class="btn btn-primary" (click) = "enviarCerveza()"> Guardar</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="container ">
-          <div class="row">
-            <div class="col-4">
-                <h4>Elegí tu postre</h4>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4">
-                <select class="custom-select" [(ngModel)] = "postreSeleccionado" name="postreSeleccionado">
-                    <option hidden value="0" selected = "selected" disabled>Seleccione postre</option>
-                    <option *ngFor = "let postre of postres" value = {{postre.id}}>{{postre.nombre}}</option>
-                  </select>
-            </div>
-            <div class="col-4">
-                <button class="btn btn-primary" (click) = "enviarPostre()"> Guardar</button>
-            </div>
-          </div>
-        </div>
-
+  <app-generar-pedido id="pedido"></app-generar-pedido>
+  
   <!-- Estado -->
 
   <div class="w3-container w3-padding-large" style="margin-bottom:32px" id="estado">
