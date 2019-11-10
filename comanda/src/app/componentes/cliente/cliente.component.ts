@@ -13,9 +13,15 @@ export class ClienteComponent implements OnInit {
  
   nombreCliente: string; 
   codigosDePedido: Array<Codigo>;
+  idMesaSeleccionada;
+
 
   constructor(private clienteService: ClientePedidosService) {
     this.codigosDePedido = new Array<any>();
+   }
+
+   habilitarGenerarPedido(idMesa) {
+     this.idMesaSeleccionada = idMesa;
    }
 
   ngOnInit() {

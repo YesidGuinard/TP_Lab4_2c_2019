@@ -6,9 +6,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-</style>
+<style> body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif} </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 <!-- Sidebar/menu -->
@@ -22,69 +20,27 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <h4><b>Nombre de usuario: {{nombreCliente}}</b></h4>
   </div>
   <div class="w3-bar-block">
-    <a href="cliente#mesa" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>MESA</a>
-    <a href="cliente#pedido" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PEDIDO</a> 
-    <a href="cliente#estado"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ESTADO</a> 
+    <a href="cliente#mesa" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>CARGAR PEDIDO</a>
+    <a href="cliente#estado"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ESTADO DE PEDIDOS</a> 
     <a href="cliente#encuesta" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ENCUESTA</a>
   </div>
 </nav>
 
-<!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:300px">
 
-  
-  <!-- Header -->
-    <header id="mesa">
-        <div class="w3-container">
-            <h3><b>Mesa</b></h3>
-        </div>
-    </header>
-
   <!-- Mesa -->
-
-  <div class="w3-container w3-padding-large" style="margin-bottom:32px" id="estado">
-    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px"> 
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-  </div>
+  <app-elegir-mesa (mesaSeleccionada) = "habilitarGenerarPedido($event)" id="mesa"></app-elegir-mesa>
   
   <!-- Pedido-->
-  <app-generar-pedido id="pedido"></app-generar-pedido>
+  <app-generar-pedido [idMesaSeleccionadaPedido] = "idMesaSeleccionada"></app-generar-pedido>
   
   <!-- Estado -->
-
-  <div class="w3-container w3-padding-large" style="margin-bottom:32px" id="estado">
-    <h3><b>Estado</b></h3>
-    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px"> 
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-     </div>
-  </div>
+  <app-estado-pedidos id="estado"></app-estado-pedidos>
   
   <!-- Encuesta  -->
-  <div class="w3-container w3-padding-large w3-light-grey" id="encuesta">
-    <h3 id="mesas"><b>Encuesta</b></h3>
-    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px"> 
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-    </div>
-  </div>
+  <app-encuesta id="encuesta"></app-encuesta>
 
-  <!-- Footer -->
-  <!-- <footer class="w3-container w3-padding-32 w3-dark-grey">
-    <div class="w3-row-padding">  </div>
-  </footer> -->
 </div>
-
-<script>
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-}
-</script>
-
 </body>
-
 </html>

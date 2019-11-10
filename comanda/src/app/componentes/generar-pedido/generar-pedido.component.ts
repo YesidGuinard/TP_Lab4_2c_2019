@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pedidos.service';
 import { Pedido } from '../../clases/pedido';
 import { Codigo } from '../../clases/codigo';
@@ -10,6 +10,8 @@ import { Codigo } from '../../clases/codigo';
   providers: [ClientePedidosService]
 })
 export class GenerarPedidoComponent implements OnInit {
+
+  @Input() idMesaSeleccionadaPedido: number = 0; 
 
   pedido: Pedido; 
   idMesa: number; 
@@ -31,6 +33,7 @@ export class GenerarPedidoComponent implements OnInit {
   habilitarAgregarVino: boolean; 
   habilitarAgregarCerveza: boolean; 
   habilitarAgregarPostre: boolean; 
+  
 
   constructor(private clienteService: ClientePedidosService) {
     this.codigosDePedido = new Array<any>();
@@ -53,8 +56,7 @@ export class GenerarPedidoComponent implements OnInit {
       codigo.tipoPedido = 'Plato principal';
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);  
-      console.log(this.codigosDePedido);
-      localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
     });
 
     this.habilitarAgregarPlatoPrincipal = true; 
@@ -82,8 +84,7 @@ export class GenerarPedidoComponent implements OnInit {
       codigo.tipoPedido = 'Vino';
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);
-      console.log(this.codigosDePedido);
-      localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
     });
 
     this.habilitarAgregarVino = true; 
@@ -111,8 +112,7 @@ export class GenerarPedidoComponent implements OnInit {
       codigo.tipoPedido = 'Cerveza';
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);
-      console.log(this.codigosDePedido);
-      localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
     });
 
     this.habilitarAgregarCerveza = true; 
@@ -140,8 +140,7 @@ export class GenerarPedidoComponent implements OnInit {
       codigo.tipoPedido = 'Postre';
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);
-      console.log(this.codigosDePedido);
-      localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
     });
     
     this.habilitarAgregarPostre = true; 

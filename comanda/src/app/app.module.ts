@@ -10,6 +10,10 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { AuthGuard } from './auth.guard';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { GenerarPedidoComponent } from './componentes/generar-pedido/generar-pedido.component';
+import { ElegirMesaComponent } from './componentes/elegir-mesa/elegir-mesa.component';
+import { CodigosPedidosComponent } from './componentes/codigos-pedidos/codigos-pedidos.component';
+import { EstadoPedidosComponent } from './componentes/estado-pedidos/estado-pedidos.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { GenerarPedidoComponent } from './componentes/generar-pedido/generar-ped
     LoginComponent,
     PrincipalComponent,
     ClienteComponent,
-    GenerarPedidoComponent
+    GenerarPedidoComponent,
+    ElegirMesaComponent,
+    CodigosPedidosComponent,
+    EstadoPedidosComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
