@@ -137,8 +137,19 @@ export class LoginComponent implements OnInit {
       this.habilitarBotonRegistro = true; 
   }
 
+  mostrarVentanaLogin(){
+    var ventanaLogin = document.getElementById('ventanaLogin');
+    ventanaLogin.style.marginTop = '100px';
+    ventanaLogin.style.left = ((document.body.clientWidth-350) / 2) +  'px';
+    ventanaLogin.style.display = 'block';
+  }
+
+  ocultarVentanaLogin() {
+    var ventanaLogin = document.getElementById('ventanaLogin');
+    ventanaLogin.style.display = 'none';
+  }
+
   mostrarVentana() {
-    console.log(this.listaTiposDeEmpleado);
     var ventana = document.getElementById('miVentana');
     ventana.style.marginTop = '100px';
     ventana.style.left = ((document.body.clientWidth-350) / 2) +  'px';
