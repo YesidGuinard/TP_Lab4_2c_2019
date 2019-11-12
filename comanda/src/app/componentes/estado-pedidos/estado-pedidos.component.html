@@ -12,10 +12,46 @@
             <p>Podes ver el estado de tu pedido cargando tu código de mesa y código de pedido</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <button class="btn btn-primary" (click) = "habilitarSeleccionDeMesa()">Ver estado de pedidos</button>
+</div>
+
+<div class="container" style="margin-top: 2%;">
+    <form>
+        <div class="form-group">
+            <div class="col-3">
+                <label for="codigoMesa">Codigo de Mesa</label>
+                <input type="text" class="form-control" id="codigoMesa" [(ngModel)] = "codigoMesa" name="codigoMesa"  maxlength="5">
+            </div>  
         </div>
-    </div>
+        <div class="form-group">
+            <div class="col-3">
+                <label for="codigoPedido">Codigo de Pedido</label>
+                <input type="text" class="form-control" id="codigoPedido" [(ngModel)] = "codigoPedido" name="codigoPedido" maxlength="5">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-3">
+                <button class="btn btn-primary btn-sm" (click) ="verTiempoRestante()">Ver Tiempo Restante</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container" style="margin-top: 2%;" *ngIf="tiempoRestante != undefined">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">Pedido</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Tiempo Restante</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>{{codigoPedido}}</td>
+            <td>{{estado}}</td>
+            <td>{{tiempoRestante}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <hr>

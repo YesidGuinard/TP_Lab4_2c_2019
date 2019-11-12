@@ -11,7 +11,7 @@ import { Codigo } from '../../clases/codigo';
 })
 export class GenerarPedidoComponent implements OnInit {
 
-  @Input() idMesaSeleccionadaPedido: number = 0; 
+  @Input() idMesaSeleccionadaPedido: number; 
 
   pedido: Pedido; 
   idMesa: number; 
@@ -46,7 +46,7 @@ export class GenerarPedidoComponent implements OnInit {
 
   enviarPlatoPrincipal() {debugger
     this.pedido = new Pedido();  
-    this.pedido.idMesa = 1;
+    this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.productoCocinaSeleccionado;
     this.pedido.cantidad = this.cantidadProductoCocina;
     this.pedido.nombreCliente = this.nombreCliente;
@@ -74,7 +74,7 @@ export class GenerarPedidoComponent implements OnInit {
 
   enviarVino() {
     this.pedido = new Pedido();  
-    this.pedido.idMesa = 1;
+    this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.vinoSeleccionado;
     this.pedido.cantidad = this.cantidadVino;
     this.pedido.nombreCliente = this.nombreCliente;
@@ -102,7 +102,7 @@ export class GenerarPedidoComponent implements OnInit {
 
   enviarCerveza() {
     this.pedido = new Pedido();  
-    this.pedido.idMesa = 1;
+    this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.cervezaSeleccionada;
     this.pedido.cantidad = this.cantidadCerveza;
     this.pedido.nombreCliente = this.nombreCliente;
@@ -130,7 +130,7 @@ export class GenerarPedidoComponent implements OnInit {
 
   enviarPostre() {
     this.pedido = new Pedido();  
-    this.pedido.idMesa = 1;
+    this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.postreSeleccionado;
     this.pedido.cantidad = this.cantidadPostre;
     this.pedido.nombreCliente = this.nombreCliente;

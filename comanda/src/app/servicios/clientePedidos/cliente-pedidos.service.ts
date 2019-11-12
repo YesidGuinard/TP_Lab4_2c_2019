@@ -28,4 +28,8 @@ export class ClientePedidosService {
   generarPedido(pedido: Pedido) {
     return this.miHttpService.httpPost1('pedido/cargar/', pedido);
   }
+
+  verTiempoRestante(codigoDeMesa: string, codigoPedido: string) {
+    return this.miHttpService.httpGet0('pedido/tiempoRestante/' + codigoDeMesa + '/' + codigoPedido + '/');
+  }
 }
