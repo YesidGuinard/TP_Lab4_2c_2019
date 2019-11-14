@@ -26,7 +26,7 @@ export class ClientePedidosService {
   }
 
   generarPedido(pedido: Pedido) {
-    return this.miHttpService.httpPost1('pedido/cargar/', pedido);
+    return this.miHttpService.httpPost0('pedido/cargar/', pedido);
   }
 
   verTiempoRestante(codigoDeMesa: string, codigoPedido: string) {

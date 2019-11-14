@@ -12,9 +12,52 @@
             <p>Al finalizar, podes realizar una encuesta de satisfacción</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="!mostrarFormulario">
         <div class="col-12">
-            <button class="btn btn-primary" (click) = "habilitarSeleccionDeMesa()">Realizar encuesta</button>
+            <button class="btn btn-primary" (click) = "realizarEncuesta()">Realizar encuesta</button>
         </div>
     </div>
+</div>
+
+<div class="container" *ngIf="mostrarFormulario">
+    <form>
+        <div class="form-group">
+            <div class="col-4">
+                <label for="codigoMesa">Codigo de Mesa</label>
+                <input type="text" class="form-control" id="codigoMesa" [(ngModel)] = "encuesta.codigoMesa" name="codigoMesa"  maxlength="5">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-4">
+                <label for="puntMesa">Puntuación Mesa</label>
+                <input type="number" class="form-control" min = "0" max = "10" [(ngModel)] = "encuesta.puntuacionMesa" name="puntMesa" id="puntMesa">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-4">
+                <label for="puntRestaurante">Puntuación Restaurante</label>
+                <input type="number" class="form-control" min = "0" max = "10" [(ngModel)] = "encuesta.puntuacionRestaurante" name="puntRestaurante" id="puntRestaurante">
+            </div>  
+        </div>
+        <div class="form-group">
+            <div class="col-4">
+                <label for="puntMozo">Puntuación Mozo</label>
+                <input type="number" class="form-control" min = "0" max = "10" [(ngModel)] = "encuesta.puntuacionMozo" name="puntMozo" id="puntMozo">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-4">
+                <label for="puntCocinero">Puntuación Cocinero</label>
+                <input type="number" class="form-control" min = "0" max = "10" [(ngModel)] = "encuesta.puntuacionCocinero" name="puntCocinero" id="puntCocinero">
+            </div>
+        </div>  
+        <div class="form-group">
+            <div class="col-4">
+                <label for="comentario">Comentario</label>
+                <textarea class="form-control" [(ngModel)] = "encuesta.comentario" name="comentario" id="comentario" maxlength="66"></textarea>
+            </div>
+        </div>        
+        <button type="button" class="btn btn-primary" (click) = "enviarEncuesta()">Enviar</button>
+        <button type="button" class="btn btn-primary" (click) = "cancelarEncuesta()">Cancelar</button>
+    </form>
 </div>
