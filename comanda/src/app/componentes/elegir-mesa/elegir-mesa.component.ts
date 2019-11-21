@@ -11,31 +11,40 @@ import { Mesa } from '../../clases/mesa';
 
 export class ElegirMesaComponent implements OnInit {
   
-@Output() mesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
-idMesaElegida: number = 0; 
-codigoMesaElegida: string;
-seleccionDeMesa: boolean = false; 
-
-  constructor(private mesasService: MesasService) { }
-
+  @Output() mesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
+  idMesaElegida: number = 0; 
+  codigoMesaElegida: string;
   mesas: Array<Mesa>;
+  clientesEnEspera: number; 
+  estadoCliente: string = null;
+  constructor(private mesasService: MesasService) { }  
 
-  habilitarSeleccionDeMesa(){
-    this.seleccionDeMesa = true;
+  habilitarSeleccionDeMesa(){debugger;
+    this.mesasService.ObtenerMesasDisponibles().subscribe(respuesta => {
+      switch(respuesta.Estado)
+      {
+        case "Espera":
+          this.estadoCliente = "E";
+          this.clientesEnEspera = respuesta.Clientes.length;
+        break;         
+        case "Seleccion":
+          this.estadoCliente = "S";
+          this.mesas = respuesta.Mesas;
+        break;         
+        case "Proximo":
+          this.estadoCliente = "P";
+        break;      
+      }
+    });
   }
 
   seleccionarMesa(idMesa, codigoMesa) {
     this.mesaSeleccionada.emit(idMesa);
     this.idMesaElegida = idMesa;
     this.codigoMesaElegida = codigoMesa;
-    this.seleccionDeMesa = false; 
+    this.estadoCliente = null; 
   }
 
-  ngOnInit() {
-    this.mesasService.ObtenerMesasDisponibles().subscribe(respuesta => {
-       this.mesas = respuesta; 
-       console.log(this.mesas); 
-      });
+  ngOnInit() {    
   }
-
 }
