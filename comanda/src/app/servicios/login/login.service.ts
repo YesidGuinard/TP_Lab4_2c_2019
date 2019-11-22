@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MiHttpService } from '../http/mi-http.service';
 import { Empleado } from '../../clases/empleado';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { Empleado } from '../../clases/empleado';
 export class LoginService {
 
   constructor(private miHttpService: MiHttpService) { }
+
+  jwtDecoder = new JwtHelperService();
 
   LoginEmpleado(empleado: Empleado) {
     return this.miHttpService.httpPost0('empleado/login/', empleado);
@@ -22,7 +25,11 @@ export class LoginService {
   }
 
   loggedIn(){
-    return !!localStorage.getItem('token');
+    var token = localStorage.getItem('token');
+    if(this.jwtDecoder.isTokenExpired(token))
+      return false
+
+    return true;  
   }
 
 }

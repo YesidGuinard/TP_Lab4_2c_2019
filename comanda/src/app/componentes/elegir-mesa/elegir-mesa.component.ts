@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { MesasService } from '../../servicios/mesas/mesas.service';
 import { Mesa } from '../../clases/mesa';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-elegir-mesa',
@@ -11,12 +12,14 @@ import { Mesa } from '../../clases/mesa';
 
 export class ElegirMesaComponent implements OnInit {
   
+  @Input() idCliente; 
   @Output() mesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
   idMesaElegida: number = 0; 
   codigoMesaElegida: string;
   mesas: Array<Mesa>;
   clientesEnEspera: number; 
   estadoCliente: string = null;
+
   constructor(private mesasService: MesasService) { }  
 
   habilitarSeleccionDeMesa(){debugger;
@@ -43,6 +46,38 @@ export class ElegirMesaComponent implements OnInit {
     this.idMesaElegida = idMesa;
     this.codigoMesaElegida = codigoMesa;
     this.estadoCliente = null; 
+  }
+
+  agregarEnListaDeEspera(){
+    this.mesasService.AgregarAListaDeEspera(this.idCliente).subscribe(respuesta => {
+      this.alertaClienteEspera(respuesta.Mensaje);
+      this.estadoCliente = "A";
+    });
+  }
+
+  actualizar(){
+    this.mesasService.ActualizarClienteEspera(this.idCliente).subscribe(respuesta => {
+      if(respuesta.Estado == 'Ok'){
+        this.alertaClienteEspera("Ya podes realizar tu pedido");
+        this.idMesaElegida = respuesta.idMesa;
+        this.codigoMesaElegida = respuesta.Codigo;
+        this.estadoCliente = null; 
+        this.mesaSeleccionada.emit(this.idMesaElegida);
+      }
+      else if(respuesta.Estado == "Alerta") {
+        this.alertaClienteEspera(respuesta.Mensaje);
+      }
+    })
+  }
+
+  alertaClienteEspera(mensaje) {
+    Swal.fire({ 
+      title: "Cliente en espera",
+      text: mensaje,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok'
+    })
   }
 
   ngOnInit() {    

@@ -58,11 +58,23 @@
   </table>
   <div class="row">
     <div class="col-4">
-      <button class="btn btn-primary">Ponerme en espera</button>
+      <button class="btn btn-primary" (click) = "agregarEnListaDeEspera()">Ponerme en espera</button>
     </div>
   </div>  
 </div>
 
+<div class="container" *ngIf = "estadoCliente == 'A'">
+  <div class="row">
+    <div class="col-12">
+      <p>Cuando tenga una mesa asignada, actualice para realizar su pedido</p>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12">
+        <button class="btn btn-primary" (click) = "actualizar()">Actualizar</button>
+      </div>
+    </div>
+</div>
 
 <div class="container" *ngIf="idMesaElegida != 0">
   <div class="row">

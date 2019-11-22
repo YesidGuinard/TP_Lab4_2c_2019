@@ -11,4 +11,12 @@ export class MesasService {
   ObtenerMesasDisponibles(){
     return this.miHttpService.httpGet0('mesa/disponibles/');
   }
+
+  AgregarAListaDeEspera(idCliente){
+    return this.miHttpService.httpPost0('mesa/listaEspera/', {'idCliente': idCliente});
+  }
+
+  ActualizarClienteEspera(idCliente){
+    return this.miHttpService.httpGet0('mesa/actualizar/' + idCliente);
+  }
 }

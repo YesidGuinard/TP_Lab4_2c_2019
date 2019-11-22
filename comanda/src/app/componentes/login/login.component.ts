@@ -3,6 +3,7 @@ import { Empleado } from '../../clases/empleado';
 import { LoginService } from '../../servicios/login/login.service';
 import { Router } from '@angular/router';
 import  Swal  from 'sweetalert2';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   respuesta: any;
   listaTiposDeEmpleado: Array<any>;
   habilitarBotonRegistro: boolean = false; 
+  jwtDecoder: JwtHelperService = new JwtHelperService();
 
   constructor(private loginService: LoginService, private router: Router) {
     this.empleado = new Empleado(); 
@@ -69,23 +71,24 @@ export class LoginComponent implements OnInit {
         console.log(respuesta);
         if(this.respuesta.Estado == "Ok") {
           localStorage.setItem('token', this.respuesta.Token);
+          var decodeToken = this.jwtDecoder.decodeToken(respuesta.Token);
           
-          if(respuesta.TipoEmpleado == "socio")
+          if(decodeToken.data.tipoEmpleado == "socio")
             this.router.navigate(['/principal']);
-          else if (respuesta.TipoEmpleado == "mozo")     
+          else if (decodeToken.data.tipoEmpleado == "mozo")     
             this.router.navigate(['/mozo']);
-          else if (respuesta.TipoEmpleado == "cocinero")
+          else if (decodeToken.data.tipoEmpleado == "cocinero")
             this.router.navigate(['/cocinero']);
-          else if (respuesta.TipoEmpleado == "bartender")
+          else if (decodeToken.data.tipoEmpleado == "bartender")
             this.router.navigate(['/bartender']);
-          else if (respuesta.TipoEmpleado == "cervecero")
+          else if (decodeToken.data.tipoEmpleado == "cervecero")
             this.router.navigate(['/cervecero'])
-          else if (respuesta.TipoEmpleado == "pastelero")
+          else if (decodeToken.data.tipoEmpleado == "pastelero")
             this.router.navigate(['/pastelero'])
-          else if (respuesta.TipoEmpleado == "cliente")
+          else if (decodeToken.data.tipoEmpleado == "cliente")
           {
-            localStorage.setItem('usuario', respuesta.Usuario);
-            this.router.navigate(['/cliente'])   
+            localStorage.setItem('usuario', decodeToken.data.usuario);
+            this.router.navigate(['/cliente/' + decodeToken.data.id]);   
           }             
         } 
         else
