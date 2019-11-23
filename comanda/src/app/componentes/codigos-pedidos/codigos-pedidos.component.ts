@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Codigo } from '../../clases/codigo';
 
 @Component({
   selector: 'app-codigos-pedidos',
@@ -9,7 +8,6 @@ import { Codigo } from '../../clases/codigo';
 export class CodigosPedidosComponent implements OnInit {
 
   @Input() listadoDeCodigos: Array<any>;
-  codigo: Codigo = new Codigo();
 
   constructor() { 
     this.listadoDeCodigos = new Array<any>();

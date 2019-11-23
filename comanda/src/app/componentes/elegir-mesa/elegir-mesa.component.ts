@@ -14,6 +14,7 @@ export class ElegirMesaComponent implements OnInit {
   
   @Input() idCliente; 
   @Output() mesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
+  @Output() codigoMesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
   idMesaElegida: number = 0; 
   codigoMesaElegida: string;
   mesas: Array<Mesa>;
@@ -22,7 +23,7 @@ export class ElegirMesaComponent implements OnInit {
 
   constructor(private mesasService: MesasService) { }  
 
-  habilitarSeleccionDeMesa(){debugger;
+  habilitarSeleccionDeMesa(){
     this.mesasService.ObtenerMesasDisponibles().subscribe(respuesta => {
       switch(respuesta.Estado)
       {
@@ -43,9 +44,11 @@ export class ElegirMesaComponent implements OnInit {
 
   seleccionarMesa(idMesa, codigoMesa) {
     this.mesaSeleccionada.emit(idMesa);
+    this.codigoMesaSeleccionada.emit(codigoMesa);
     this.idMesaElegida = idMesa;
     this.codigoMesaElegida = codigoMesa;
     this.estadoCliente = null; 
+    this.mesasService.CambiarEstadoMesaAsignada(codigoMesa).subscribe();
   }
 
   agregarEnListaDeEspera(){

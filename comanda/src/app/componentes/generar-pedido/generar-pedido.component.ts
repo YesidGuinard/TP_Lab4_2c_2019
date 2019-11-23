@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pedidos.service';
 import { Pedido } from '../../clases/pedido';
 import { Codigo } from '../../clases/codigo';
@@ -12,6 +12,8 @@ import { Codigo } from '../../clases/codigo';
 export class GenerarPedidoComponent implements OnInit {
 
   @Input() idMesaSeleccionadaPedido: number; 
+  @Input() idCliente; 
+  @Output() pedidos: EventEmitter<any> = new EventEmitter<any>();
 
   pedido: Pedido; 
   idMesa: number; 
@@ -50,13 +52,14 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idProducto = this.productoCocinaSeleccionado;
     this.pedido.cantidad = this.cantidadProductoCocina;
     this.pedido.nombreCliente = this.nombreCliente;
+    var codigo: string = null; 
 
-    this.clienteService.generarPedido(this.pedido).subscribe(res => {
+    this.clienteService.generarPedido(this.pedido).subscribe(res => {debugger
       var codigo = new Codigo();
-      codigo.tipoPedido = 'Plato principal';
+      codigo.producto = this.buscarNombreProducto(this.pedido.idProducto, this.productosCocina);
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);  
-      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      this.pedidos.emit(this.codigosDePedido);
     });
 
     this.habilitarAgregarPlatoPrincipal = true; 
@@ -81,10 +84,10 @@ export class GenerarPedidoComponent implements OnInit {
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
       var codigo = new Codigo();
-      codigo.tipoPedido = 'Vino';
+      codigo.producto = this.buscarNombreProducto(this.pedido.idProducto, this.vinos);
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);
-      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      this.pedidos.emit(this.codigosDePedido);
     });
 
     this.habilitarAgregarVino = true; 
@@ -109,10 +112,10 @@ export class GenerarPedidoComponent implements OnInit {
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
       var codigo = new Codigo();
-      codigo.tipoPedido = 'Cerveza';
+      codigo.producto = this.buscarNombreProducto(this.pedido.idProducto, this.cervezas);
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);
-      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      this.pedidos.emit(this.codigosDePedido);
     });
 
     this.habilitarAgregarCerveza = true; 
@@ -137,10 +140,10 @@ export class GenerarPedidoComponent implements OnInit {
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
       var codigo = new Codigo();
-      codigo.tipoPedido = 'Postre';
+      codigo.producto = this.buscarNombreProducto(this.pedido.idProducto, this.postres);
       codigo.codigo = res.CodigoPedido;
       this.codigosDePedido.push(codigo);
-      // localStorage.setItem('codigos', JSON.stringify(this.codigosDePedido));
+      this.pedidos.emit(this.codigosDePedido);
     });
     
     this.habilitarAgregarPostre = true; 
@@ -154,6 +157,15 @@ export class GenerarPedidoComponent implements OnInit {
     this.habilitarAgregarPostre = false; 
     document.getElementById('selectPostre').removeAttribute('disabled');
     document.getElementById('cantidadPostre').removeAttribute('disabled');
+  }
+
+  buscarNombreProducto(idProducto, listaProductos): string{
+    var nombreProducto: string = "";
+    listaProductos.forEach(prod => {
+      if(prod.id == idProducto)
+        nombreProducto = prod.nombre;          
+    });
+    return nombreProducto;
   }
 
   ngOnInit() {

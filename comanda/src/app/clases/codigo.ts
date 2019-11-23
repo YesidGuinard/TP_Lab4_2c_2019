@@ -1,5 +1,5 @@
 export class Codigo {
 
-    tipoPedido: string;
+    producto: string;
     codigo: string;  
 }

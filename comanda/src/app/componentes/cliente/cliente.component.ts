@@ -15,7 +15,9 @@ export class ClienteComponent implements OnInit {
   nombreCliente: string; 
   codigosDePedido: Array<Codigo>;
   idMesaSeleccionada;
+  codigoMesaSeleccionada;
   clienteId;
+  pedidos; 
 
   constructor(private clienteService: ClientePedidosService, private rutaActiva: ActivatedRoute) {
     this.codigosDePedido = new Array<any>();
@@ -23,6 +25,14 @@ export class ClienteComponent implements OnInit {
 
    habilitarGenerarPedido(idMesa) {
      this.idMesaSeleccionada = idMesa;
+   }
+
+   recibirCodigoMesaSeleccionada(codigo){
+    this.codigoMesaSeleccionada = codigo; 
+   }
+
+   recibePedidos(pedidos) { 
+     this.pedidos = pedidos; 
    }
 
   ngOnInit() {

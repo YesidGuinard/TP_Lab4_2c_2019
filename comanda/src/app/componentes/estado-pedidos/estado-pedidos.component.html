@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <p>Podes ver el estado de tu pedido cargando tu código de mesa y código de pedido</p>
+            <p>Podes ver el estado de tu pedido seleccionando tu pedido en la lista</p>
         </div>
     </div>
 </div>
@@ -19,19 +19,14 @@
         <div class="form-group">
             <div class="col-3">
                 <label for="codigoMesa">Codigo de Mesa</label>
-                <input type="text" class="form-control" id="codigoMesa" [(ngModel)] = "codigoMesa" name="codigoMesa"  maxlength="5">
+                <input type="text" class="form-control" id="codigoMesa" [(ngModel)] = "codigoMesa" name="codigoMesa"  maxlength="5" disabled>
             </div>  
         </div>
-        <div class="form-group">
-            <div class="col-3">
-                <label for="codigoPedido">Codigo de Pedido</label>
-                <input type="text" class="form-control" id="codigoPedido" [(ngModel)] = "codigoPedido" name="codigoPedido" maxlength="5">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-3">
-                <button class="btn btn-primary btn-sm" (click) ="verTiempoRestante()">Ver Tiempo Restante</button>
-            </div>
+        <div class="col-3">
+            <select class="custom-select" [(ngModel)] = "codigoPedido" name="pedidoSeleccionado" (change) = "verTiempoRestante()">
+                <option hidden value="0" selected = "selected" disabled>Seleccione pedido</option>
+                <option *ngFor = "let pedido of pedidosRealizados" value = {{pedido.codigo}}>{{pedido.producto}}</option>
+            </select>
         </div>
     </form>
 </div>

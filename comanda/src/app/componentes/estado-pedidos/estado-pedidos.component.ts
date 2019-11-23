@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pedidos.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pe
 })
 export class EstadoPedidosComponent implements OnInit {
 
-  codigoMesa: string; 
+  @Input() codigoMesa: string; 
+  @Input() pedidosRealizados;
   codigoPedido: string; 
   tiempoRestante: string; 
   estado: string; 
