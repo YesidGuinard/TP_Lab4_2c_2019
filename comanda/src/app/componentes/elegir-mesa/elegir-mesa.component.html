@@ -63,6 +63,21 @@
   </div>  
 </div>
 
+<div class="container" *ngIf ="estadoCliente == 'P'"> 
+  <div class="row">
+    <div class="col-4">
+      <h4>No hay mesas disponibles</h4>
+      <p>Debe esperar a que se desocupe una mesa</p>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="col-4">
+      <button class="btn btn-primary" (click) = "agregarEnListaDeEspera()">Ponerme en espera</button>
+    </div>
+  </div>  
+</div>
+
+
 <div class="container" *ngIf = "estadoCliente == 'A'">
   <div class="row">
     <div class="col-12">
