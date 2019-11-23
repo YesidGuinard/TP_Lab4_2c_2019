@@ -39,16 +39,17 @@
   <!-- Pedido-->
   <app-generar-pedido [idMesaSeleccionadaPedido] = "idMesaSeleccionada"
                       [idCliente] = "clienteId"
-                      (pedidos) = "recibePedidos($event)"
-                      ></app-generar-pedido>
+                      (pedidos) = "recibePedidos($event)">
+  </app-generar-pedido>
   
   <!-- Estado -->
 
   <app-estado-pedidos [codigoMesa] = "codigoMesaSeleccionada"
-                      [pedidosRealizados] = "pedidos" id="estado"></app-estado-pedidos>
+                      [pedidosRealizados] = "pedidos" id="estado">
+  </app-estado-pedidos>
   
   <!-- Encuesta  -->
-  <app-encuesta id="encuesta"></app-encuesta>
+  <app-encuesta id="encuesta" [codigoMesa]="codigoMesaSeleccionada"></app-encuesta>
 
   <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
   </div>

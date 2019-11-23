@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Encuesta } from '../../clases/encuesta';
 import { EncuestaService } from '../../servicios/encuesta/encuesta.service';
 import  Swal  from 'sweetalert2';
@@ -11,6 +11,7 @@ import  Swal  from 'sweetalert2';
 })
 export class EncuestaComponent implements OnInit {
 
+  @Input() codigoMesa;
   encuesta: Encuesta; 
   mensaje: string; 
   mostrarFormulario: boolean = false; 
@@ -23,7 +24,8 @@ export class EncuestaComponent implements OnInit {
      this.mostrarFormulario = true;
    }
 
-   enviarEncuesta(){debugger
+   enviarEncuesta(){
+     this.encuesta.codigoMesa = this.codigoMesa;
      return this.encuestaService.registrarEncuesta(this.encuesta).subscribe(respuesta => {
       this.mensaje = respuesta.mensaje;
       this.mensajeEncuesta();
