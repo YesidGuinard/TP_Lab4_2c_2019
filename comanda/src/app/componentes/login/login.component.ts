@@ -70,13 +70,15 @@ export class LoginComponent implements OnInit {
         this.respuesta = respuesta;
         console.log(respuesta);
         if(this.respuesta.Estado == "Ok") {
+          
           localStorage.setItem('token', this.respuesta.Token);
           var decodeToken = this.jwtDecoder.decodeToken(respuesta.Token);
+          localStorage.setItem('usuario', decodeToken.data.usuario);
           
           if(decodeToken.data.tipoEmpleado == "socio")
             this.router.navigate(['/principal']);
           else if (decodeToken.data.tipoEmpleado == "mozo")     
-            this.router.navigate(['/mozo']);
+            this.router.navigate(['/mozo/' + decodeToken.data.id]);
           else if (decodeToken.data.tipoEmpleado == "cocinero")
             this.router.navigate(['/cocinero']);
           else if (decodeToken.data.tipoEmpleado == "bartender")
@@ -85,11 +87,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/cervecero'])
           else if (decodeToken.data.tipoEmpleado == "pastelero")
             this.router.navigate(['/pastelero'])
-          else if (decodeToken.data.tipoEmpleado == "cliente")
-          {
-            localStorage.setItem('usuario', decodeToken.data.usuario);
-            this.router.navigate(['/cliente/' + decodeToken.data.id]);   
-          }             
+          else if (decodeToken.data.tipoEmpleado == "cliente")     
+            this.router.navigate(['/cliente/' + decodeToken.data.id]);                
         } 
         else
           this.alertaUsuarioInvalido();
@@ -124,8 +123,8 @@ export class LoginComponent implements OnInit {
     if(this.nuevoUsuario.usuario != "" && this.nuevoUsuario.clave != "")
     {
       this.loginService.RegistrarEmpleado(this.nuevoUsuario).subscribe(respuesta => {
-        this.respuesta = JSON.parse(respuesta);
-        if(this.respuesta.Estado == "Ok") {
+        // this.respuesta = JSON.parse(respuesta);
+        if(respuesta.Estado == "Ok") {
           this.alertaUsuarioRegistrado();
         }
         else

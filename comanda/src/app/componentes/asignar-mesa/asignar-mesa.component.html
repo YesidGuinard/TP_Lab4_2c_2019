@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">        
+            <h3>Asignar Mesa a Clientes en espera</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf ="listadoClientesEnEspera.length > 0"> 
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Numero de llegada</th>
+            <th scope="col">Numero de cliente</th>
+            <th scope="col">Nombre de cliente</th>
+            <th scope="col">Elegir cliente</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cliente of listadoClientesEnEspera">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.idCliente}}</td>
+            <td>{{cliente.usuario}}</td>
+            <td><button class="btn btn-primary" (click)="elegirCliente(cliente.idCliente)">Elegir</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf ="mesasDisponibles.length > 0"> 
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Numero de mesa</th>
+                <th scope="col">Codigo de mesa</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let mesa of mesasDisponibles">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="asignarMesa(mesa.codigo)">Asignar</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+

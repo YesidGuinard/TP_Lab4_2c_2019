@@ -26,4 +26,12 @@ export class MesasService {
                                                             'idCliente': idCliente
                                                           });
   }
+
+  ObtenerClientesEnEspera(){
+    return this.miHttpService.httpGet0('clientes/espera/');
+  }
+
+  ObtenerMesasDisponiblesMozo(){
+    return this.miHttpService.httpGet0('mesa/disponibles/mozo/');
+  }
 }

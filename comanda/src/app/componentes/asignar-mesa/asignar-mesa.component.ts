@@ -1,0 +1,41 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { MesasService } from 'src/app/servicios/mesas/mesas.service';
+import Swal from 'sweetalert2';
+
+@Component({
+  selector: 'app-asignar-mesa',
+  templateUrl: './asignar-mesa.component.html',
+  styleUrls: ['./asignar-mesa.component.css']
+})
+export class AsignarMesaComponent implements OnInit {
+
+  @Input() listadoClientesEnEspera;
+  idClienteEnEspera;
+  mesasDisponibles = new Array<any>(); 
+
+  constructor(private mesasService: MesasService) { }
+
+  elegirCliente(idCliente){
+    this.idClienteEnEspera = idCliente;
+    this.mesasService.ObtenerMesasDisponiblesMozo().subscribe(respuesta => {
+      if(respuesta.Estado == "Disponibles") {
+        this.mesasDisponibles = respuesta.Mesas;
+      }
+    })
+  }
+
+  asignarMesa(codigoMesa){
+    this.mesasService.CambiarEstadoMesaAsignada(codigoMesa, this.idClienteEnEspera).subscribe(respuesta => {
+      Swal.fire({
+        position: 'top-end',
+        title: respuesta.Mensaje,
+        showConfirmButton: false,
+        timer: 1500
+        });
+    });
+  }
+
+  ngOnInit() {
+  }
+ 
+}
