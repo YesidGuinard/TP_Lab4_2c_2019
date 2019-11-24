@@ -61,8 +61,10 @@
                 <textarea class="form-control" [(ngModel)] = "encuesta.comentario" name="comentario" id="comentario" maxlength="66"></textarea>
             </div>
         </div>        
-        <button type="button" class="btn btn-primary" (click) = "enviarEncuesta()">Enviar</button>
-        <button type="button" class="btn btn-primary" (click) = "cancelarEncuesta()">Cancelar</button>
+        <div class="form-group" style="margin-bottom: 2%; margin-left: 2%;">
+            <button type="button" class="btn btn-primary" (click) = "enviarEncuesta()">Enviar</button>
+            <!-- <button type="button" class="btn btn-primary" (click) = "cancelarEncuesta()">Cancelar</button> -->
+        </div>
     </form>
 </div>
 

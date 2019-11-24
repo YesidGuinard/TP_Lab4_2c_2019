@@ -15,11 +15,11 @@ export class ElegirMesaComponent implements OnInit {
   @Input() idCliente; 
   @Output() mesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
   @Output() codigoMesaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
-  idMesaElegida: number = 0; 
-  codigoMesaElegida: string;
+  @Input() idMesaElegida;
+  @Input() estadoCliente: string = null;
+  @Input() codigoMesaElegida: string;
   mesas: Array<Mesa>;
   clientesEnEspera: number; 
-  estadoCliente: string = null;
 
   constructor(private mesasService: MesasService) { }  
 
@@ -48,7 +48,7 @@ export class ElegirMesaComponent implements OnInit {
     this.idMesaElegida = idMesa;
     this.codigoMesaElegida = codigoMesa;
     this.estadoCliente = null; 
-    this.mesasService.CambiarEstadoMesaAsignada(codigoMesa).subscribe();
+    this.mesasService.CambiarEstadoMesaAsignada(codigoMesa, this.idCliente).subscribe();
   }
 
   agregarEnListaDeEspera(){
@@ -66,6 +66,7 @@ export class ElegirMesaComponent implements OnInit {
         this.codigoMesaElegida = respuesta.Codigo;
         this.estadoCliente = null; 
         this.mesaSeleccionada.emit(this.idMesaElegida);
+        this.codigoMesaSeleccionada.emit(this.codigoMesaElegida);
       }
       else if(respuesta.Estado == "Alerta") {
         this.alertaClienteEspera(respuesta.Mensaje);

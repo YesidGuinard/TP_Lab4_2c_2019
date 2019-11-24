@@ -14,6 +14,7 @@ export class GenerarPedidoComponent implements OnInit {
   @Input() idMesaSeleccionadaPedido: number; 
   @Input() idCliente; 
   @Output() pedidos: EventEmitter<any> = new EventEmitter<any>();
+  @Input() codigosDePedido: Array<Codigo>;
 
   pedido: Pedido; 
   idMesa: number; 
@@ -30,7 +31,7 @@ export class GenerarPedidoComponent implements OnInit {
   postres: Array<any>;
   postreSeleccionado: any; 
   cantidadPostre: number; 
-  codigosDePedido: Array<Codigo>;
+ 
   habilitarAgregarPlatoPrincipal: boolean;
   habilitarAgregarVino: boolean; 
   habilitarAgregarCerveza: boolean; 
@@ -38,7 +39,7 @@ export class GenerarPedidoComponent implements OnInit {
   
 
   constructor(private clienteService: ClientePedidosService) {
-    this.codigosDePedido = new Array<any>();
+    // this.codigosDePedido = new Array<any>();
     this.nombreCliente = localStorage.getItem('usuario');
     this.habilitarAgregarPlatoPrincipal = false; 
     this.habilitarAgregarVino = false; 
@@ -51,8 +52,8 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.productoCocinaSeleccionado;
     this.pedido.cantidad = this.cantidadProductoCocina;
+    this.pedido.idCliente = this.idCliente;
     this.pedido.nombreCliente = this.nombreCliente;
-    var codigo: string = null; 
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {debugger
       var codigo = new Codigo();
@@ -80,6 +81,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.vinoSeleccionado;
     this.pedido.cantidad = this.cantidadVino;
+    this.pedido.idCliente = this.idCliente;
     this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
@@ -108,6 +110,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.cervezaSeleccionada;
     this.pedido.cantidad = this.cantidadCerveza;
+    this.pedido.idCliente = this.idCliente;
     this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
@@ -126,7 +129,7 @@ export class GenerarPedidoComponent implements OnInit {
   }
 
   habilitarBotonGuardarCerveza(){
-    this.habilitarAgregarVino = false; 
+    this.habilitarAgregarCerveza = false; 
     document.getElementById('selectCerveza').removeAttribute('disabled');
     document.getElementById('cantidadCerveza').removeAttribute('disabled');
   }
@@ -136,6 +139,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idMesa = this.idMesaSeleccionadaPedido;
     this.pedido.idProducto = this.postreSeleccionado;
     this.pedido.cantidad = this.cantidadPostre;
+    this.pedido.idCliente = this.idCliente;
     this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {

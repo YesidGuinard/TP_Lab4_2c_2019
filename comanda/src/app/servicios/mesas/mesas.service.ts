@@ -20,7 +20,10 @@ export class MesasService {
     return this.miHttpService.httpGet0('mesa/actualizar/' + idCliente);
   }
 
-  CambiarEstadoMesaAsignada(codigoMesa){
-    return this.miHttpService.httpPost0('mesa/asignada/', {'codigo':codigoMesa});
+  CambiarEstadoMesaAsignada(codigoMesa, idCliente){
+    return this.miHttpService.httpPost0('mesa/asignada/', {
+                                                            'codigo':codigoMesa,
+                                                            'idCliente': idCliente
+                                                          });
   }
 }

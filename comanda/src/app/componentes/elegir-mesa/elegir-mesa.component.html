@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="container" *ngIf = "estadoCliente == null && idMesaElegida == 0">
+<div class="container" *ngIf = "estadoCliente == null && idMesaElegida == undefined">
   <div class="row">
     <div class="col-12">
       <p>Para iniciar su pedido, seleccione una mesa</p>
@@ -91,7 +91,7 @@
     </div>
 </div>
 
-<div class="container" *ngIf="idMesaElegida != 0">
+<div class="container" *ngIf="idMesaElegida != undefined">
   <div class="row">
     <div class="col-12">
       <h4>Su mesa: </h4>

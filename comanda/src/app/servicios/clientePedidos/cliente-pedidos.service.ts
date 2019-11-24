@@ -32,4 +32,8 @@ export class ClientePedidosService {
   verTiempoRestante(codigoDeMesa: string, codigoPedido: string) {
     return this.miHttpService.httpGet0('pedido/tiempoRestante/' + codigoDeMesa + '/' + codigoPedido + '/');
   }
+
+  recuperarDatosCliente(idCliente){
+    return this.miHttpService.httpGet0('cliente/estado/' + idCliente);
+  }
 }
