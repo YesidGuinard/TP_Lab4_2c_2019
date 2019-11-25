@@ -7,53 +7,86 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif
+  }
 </style>
+
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container">
-    <a href="#" (click)="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-      <i class="fa fa-remove"></i>
-    </a>
-    <img src="/w3images/avatar_g2.jpg" style="width:45%;" class="w3-round"><br><br> <!-- Llamar a imagen de registro de usuario-->
-    <h4><b>MOZO</b></h4>
-  </div>
-  <div class="w3-bar-block">
-    <a href="/mozo/{{idMozo}}#asignarMesa" (click)="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ASIGNAR MESA</a> 
-    <a href="/mozo/{{idMozo}}#buscarCliente" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>BUSCAR CLIENTE</a> 
-    <a href="#contact" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
-  </div>
-</nav>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large w3-animate-opacity" (click)="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:300px">
-
-  <!-- Header -->
-  <header id="titulo">
-    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
-    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i class="fa fa-bars"></i></span>
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
-        <h1><b>Gestion de pedidos</b></h1>
+      <a href="#" (click)="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
+        title="close menu">
+        <i class="fa fa-remove"></i>
+      </a>
+      <img src="../../../assets/mozo.jpg" style="width:45%;" class="w3-round"><br><br>
+      <!-- Llamar a imagen de registro de usuario-->
+      <h4><b>MOZO</b></h4>
     </div>
-  </header>
-  
- <!-- Asignar Mesa -->
-<app-asignar-mesa [listadoClientesEnEspera] = "clientesEnEspera" id="asignarMesa"></app-asignar-mesa>
+    <div class="w3-bar-block">
+      <a href="/mozo/{{idMozo}}#asignarMesa" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+          class="fa fa-th-large fa-fw w3-margin-right"></i>ASIGNAR MESA</a>
+      <a href="/mozo/{{idMozo}}#buscarCliente" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+          class="fa fa-th-large fa-fw w3-margin-right"></i>BUSCAR CLIENTE</a>
+      <a href="/mozo/{{idMozo}}#agregarListaEspera" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+          class="fa fa-th-large fa-fw w3-margin-right"></i>AGREGAR A LISTA DE ESPERA</a>
+    </div>
+  </nav>
 
-<!--Buscar cliente-->
-<app-buscar-cliente (enviarIdCliente)="recibeIdCliente($event)" id="buscarCliente"></app-buscar-cliente>
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" (click)="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay"></div>
 
-<!-- Poner cliente en espera -->
-<app-poner-cliente-en-espera [idCliente] = "clienteId" (enviarClientesEnEspera) = "recibeClientesEnEspera($event)"></app-poner-cliente-en-espera>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px">
+
+    <!-- Header -->
+    <header id="titulo">
+      <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i
+          class="fa fa-bars"></i></span>
+      <div class="w3-container">
+        <h1><b>Gestion de pedidos</b></h1>
+      </div>
+    </header>
+
+    <!-- Asignar Mesa -->
+    <app-asignar-mesa [listadoClientesEnEspera]="clientesEnEspera" id="asignarMesa"></app-asignar-mesa>
+
+    <!--Buscar cliente-->
+    <app-buscar-cliente (enviarIdCliente)="recibeIdCliente($event)" id="buscarCliente"></app-buscar-cliente>
+
+    <!-- Poner cliente en espera -->
+    <app-poner-cliente-en-espera  [idCliente]="clienteId" 
+                                  (enviarClientesEnEspera)="recibeClientesEnEspera($event)"
+                                  id="agregarListaEspera">
+    </app-poner-cliente-en-espera>
+
+    <app-elegir-mesa  [idCliente]="clienteId" 
+                      [idMesaElegida]="idMesaSeleccionada" 
+                      [estadoCliente]="clienteEstado"
+                      [codigoMesaElegida]="codigoMesaSeleccionada" 
+                      (mesaSeleccionada)="habilitarGenerarPedido($event)"
+                      (codigoMesaSeleccionada)="recibirCodigoMesaSeleccionada($event)" 
+                      id="mesa">
+    </app-elegir-mesa>
+
+    <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    </div>
 
 
-<!-- End page content -->
-</div>
+    <!-- End page content -->
+  </div>
 
 </body>
+
 </html>
