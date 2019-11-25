@@ -11,15 +11,20 @@ export class AsignarMesaComponent implements OnInit {
 
   @Input() listadoClientesEnEspera;
   idClienteEnEspera;
+  clienteElegido; 
   mesasDisponibles = new Array<any>(); 
+  verClientesEnEspera:boolean;
+  verMesasDisponibles:boolean = false;  
 
   constructor(private mesasService: MesasService) { }
 
   elegirCliente(idCliente){
     this.idClienteEnEspera = idCliente;
+    this.obtenerNombreClienteElegido(idCliente);
     this.mesasService.ObtenerMesasDisponiblesMozo().subscribe(respuesta => {
       if(respuesta.Estado == "Disponibles") {
         this.mesasDisponibles = respuesta.Mesas;
+        this.verMesasDisponibles = true;
       }
     })
   }
@@ -32,10 +37,27 @@ export class AsignarMesaComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
         });
+        if(respuesta.Estado == "Ok"){
+          this.mesasService.ObtenerClientesEnEspera().subscribe(respuesta => {
+            if(respuesta.Estado == "Clientes")
+              this.listadoClientesEnEspera = respuesta.Clientes;
+            else if(respuesta.Estado == "Vacio")
+              this.listadoClientesEnEspera = new Array<any>();
+          })
+        } 
+    });
+    this.verMesasDisponibles = false; 
+  }
+
+  obtenerNombreClienteElegido(idCliente) {
+    this.listadoClientesEnEspera.forEach(element => {
+      if(element.idCliente == idCliente)
+        this.clienteElegido = element.usuario;     
     });
   }
 
   ngOnInit() {
+    console.log(this.listadoClientesEnEspera);
   }
  
 }
