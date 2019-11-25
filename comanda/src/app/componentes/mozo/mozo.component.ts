@@ -44,9 +44,7 @@ export class MozoComponent implements OnInit {
     }
   }
 
-  recibePedidos(pedidos) {
-
-  }
+  recibePedidos(pedidos) {}
 
   habilitarGenerarPedido(param) {
     this.idMesaSeleccionada = param;

@@ -74,20 +74,19 @@ export class LoginComponent implements OnInit {
           
           localStorage.setItem('token', this.respuesta.Token);
           var decodeToken = this.jwtDecoder.decodeToken(respuesta.Token);
-          localStorage.setItem('usuario', decodeToken.data.usuario);
           
           if(decodeToken.data.tipoEmpleado == "socio")
-            this.router.navigate(['/principal']);
+            this.router.navigate(['/principal/' + decodeToken.data.id]);
           else if (decodeToken.data.tipoEmpleado == "mozo")     
             this.router.navigate(['/mozo/' + decodeToken.data.id]);
           else if (decodeToken.data.tipoEmpleado == "cocinero")
-            this.router.navigate(['/cocinero']);
+            this.router.navigate(['/cocinero/' + decodeToken.data.id]);
           else if (decodeToken.data.tipoEmpleado == "bartender")
-            this.router.navigate(['/bartender']);
+            this.router.navigate(['/bartender/' + decodeToken.data.id]);
           else if (decodeToken.data.tipoEmpleado == "cervecero")
-            this.router.navigate(['/cervecero'])
+            this.router.navigate(['/cervecero/' + decodeToken.data.id])
           else if (decodeToken.data.tipoEmpleado == "pastelero")
-            this.router.navigate(['/pastelero'])
+            this.router.navigate(['/pastelero/' + decodeToken.data.id])
           else if (decodeToken.data.tipoEmpleado == "cliente")     
             this.router.navigate(['/cliente/' + decodeToken.data.id]);                
         } 

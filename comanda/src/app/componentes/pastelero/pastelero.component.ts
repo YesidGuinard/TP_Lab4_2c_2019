@@ -4,17 +4,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-cocinero',
-  templateUrl: './cocinero.component.html',
-  styleUrls: ['./cocinero.component.css']
+  selector: 'app-pastelero',
+  templateUrl: './pastelero.component.html',
+  styleUrls: ['./pastelero.component.css']
 })
-export class CocineroComponent implements OnInit {
+export class PasteleroComponent implements OnInit {
 
-  idCocinero;
-  nombreCocinero;
-  foto; 
+  idPastelero;
+  nombrePastelero;
+  foto;
 
-  constructor(private loginService: LoginService,  private rutaActiva: ActivatedRoute,  private router: Router) { }
+  constructor( private loginService: LoginService,  private rutaActiva: ActivatedRoute,  private router: Router) { }
 
   cerrarSesion(){
     Swal.fire({
@@ -33,16 +33,16 @@ export class CocineroComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.idCocinero = this.rutaActiva.snapshot.params.idCocinero;
-    this.loginService.BuscarUsuario(this.idCocinero).subscribe(respuesta => {
+    this.idPastelero = this.rutaActiva.snapshot.params.idPastelero;
+    this.loginService.BuscarUsuario(this.idPastelero).subscribe(respuesta => {
       if (respuesta.Estado == "Ok") {
-        this.nombreCocinero = respuesta.Usuario.usuario;
+        this.nombrePastelero = respuesta.Usuario.usuario;
         this.foto = respuesta.Usuario.foto;
       }
     })
   }
 
-    w3_open() {
+  w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
   }
