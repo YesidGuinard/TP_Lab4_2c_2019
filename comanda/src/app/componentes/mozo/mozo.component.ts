@@ -16,6 +16,7 @@ export class MozoComponent implements OnInit {
   idMesaSeleccionada;
   clienteEstado;
   codigoMesaSeleccionada;
+  pedidos;
 
 
   constructor(private mesasService: MesasService, private rutaActiva: ActivatedRoute) { }
@@ -28,12 +29,12 @@ export class MozoComponent implements OnInit {
     this.clientesEnEspera = clientes; 
   }
 
-  habilitarGenerarPedido(param){
+  recibePedidos(pedidos){
 
   }
 
-  recibirCodigoMesaSeleccionada(param){
-    
+  habilitarGenerarPedido(param){
+    this.idMesaSeleccionada = param; 
   }
 
   ngOnInit() {debugger

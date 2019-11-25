@@ -65,7 +65,6 @@ export class AsignarMesaComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.listadoClientesEnEspera);
   }
  
 }

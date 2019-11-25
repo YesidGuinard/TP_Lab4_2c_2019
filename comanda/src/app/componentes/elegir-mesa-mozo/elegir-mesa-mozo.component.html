@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Cargar Pedidos</h3>
+        </div>
+    </div>
+    <div class="row" *ngIf="numeroCliente == undefined">
+        <div class="col-12">
+            <p>Buscar un cliente para cargar un pedido</p>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="numeroCliente != undefined && estadoCliente == undefined">
+    <div class="col-12" style="margin-top: 2%;">
+        <p>Recuperar datos del cliente numero {{numeroCliente}}</p>
+    </div>
+    <div class="form-group" style="margin-bottom: 2%; margin-left: 1.5%;">
+        <button type="button" class="btn btn-primary" (click)="recuperarDatosCliente()">Recuperar</button>
+    </div>
+</div>
+
+<div class="container" *ngIf="estadoCliente == 'S'">
+    <div class="col-12" style="margin-top: 2%">
+        <p>Para iniciar su pedido, seleccione una mesa</p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mesa</th>
+                <th scope="col">Codigo</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesa of mesasDisponibles">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="seleccionarMesa(mesa.id, mesa.codigo)">Elegir</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="estadoCliente == 'M'">
+    <div class="row">
+        <div class="col-12">
+            <h4>Mesa asignada: </h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Mesa</th>
+                        <th scope="col">Codigo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{idMesaAsignada}}</td>
+                        <td>{{codigoMesaAsignada}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<hr>

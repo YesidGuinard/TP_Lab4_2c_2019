@@ -1,107 +1,108 @@
-
 <div *ngIf="idMesaSeleccionadaPedido != undefined">
   <div class="container" id="pedido">
     <div class="row">
       <div class="col-4">
-          <h4>Elegí tu plato principal</h4>
+        <h4>Elegí tu plato principal</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-4">
-        <select class="custom-select" [(ngModel)] = "productoCocinaSeleccionado" name="productoCocinaSeleccionado" id="selectCocina">
-          <option hidden value="0" selected = "selected" disabled>Seleccione plato principal</option>
-          <option *ngFor = "let prod of productosCocina" value = {{prod.id}}>{{prod.nombre}}</option>
+        <select class="custom-select" [(ngModel)]="productoCocinaSeleccionado" name="productoCocinaSeleccionado"
+          id="selectCocina">
+          <option hidden value="0" selected="selected" disabled>Seleccione plato principal</option>
+          <option *ngFor="let prod of productosCocina" value={{prod.id}}>{{prod.nombre}}</option>
         </select>
       </div>
       <div class="col-2">
-        <input type="number" class="form-control" placeholder="cantidad" min = "1" [(ngModel)] = "cantidadProductoCocina" name="cantidadProductoCocina" id="cantidadCocina">
+        <input type="number" class="form-control" placeholder="cantidad" min="1" [(ngModel)]="cantidadProductoCocina"
+          name="cantidadProductoCocina" id="cantidadCocina">
       </div>
-      <div class="col-2" *ngIf = "!habilitarAgregarPlatoPrincipal">
-          <button class="btn btn-primary" (click) = "enviarPlatoPrincipal()"> Guardar</button>
+      <div class="col-2" *ngIf="!habilitarAgregarPlatoPrincipal">
+        <button class="btn btn-primary" (click)="enviarPlatoPrincipal()"> Guardar</button>
       </div>
-      <div class="col-2" *ngIf = "habilitarAgregarPlatoPrincipal">
-        <button class="btn btn-primary" (click) = "habilitarBotonGuardarCocina()"> Agregar Plato </button>
-    </div>
+      <div class="col-2" *ngIf="habilitarAgregarPlatoPrincipal">
+        <button class="btn btn-primary" (click)="habilitarBotonGuardarCocina()"> Agregar Plato </button>
+      </div>
     </div>
   </div>
 
   <div class="container">
-      <div class="row">
-        <div class="col-4">
-            <h4>¿Vas a tomar vino? Elegí el que más te guste: </h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-            <select class="custom-select" [(ngModel)] = "vinoSeleccionado" name="vinoSeleccionado" id="selectVino">
-                <option hidden value="0" selected = "selected" disabled>Seleccione vino</option>
-                <option *ngFor = "let vino of vinos" value = {{vino.id}}>{{vino.nombre}}</option>
-              </select>
-        </div>
-        <div class="col-2">
-          <input type="number" class="form-control" placeholder="cantidad" min = "1" [(ngModel)] = "cantidadVino" name="cantidadVino" id="cantidadVino">
-        </div>
-        <div class="col-2" *ngIf = "!habilitarAgregarVino">
-            <button class="btn btn-primary" (click) = "enviarVino()"> Guardar</button>
-        </div>
-        <div class="col-2" *ngIf = "habilitarAgregarVino">
-            <button class="btn btn-primary" (click) = "habilitarBotonGuardarVino()"> Agregar Vino </button>
-        </div>
+    <div class="row">
+      <div class="col-4">
+        <h4>¿Vas a tomar vino? Elegí el que más te guste: </h4>
       </div>
     </div>
-
-    <div class="container ">
-        <div class="row">
-          <div class="col-4">
-              <h4>¿Preferís una cerveza artesanal? Elegí la que más te guste: </h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-              <select class="custom-select" [(ngModel)] = "cervezaSeleccionada" name="cervezaSeleccionada" id="selectCerveza">
-                  <option hidden value="0" selected = "selected" disabled>Seleccione cerveza</option>
-                  <option *ngFor = "let cerv of cervezas" value = {{cerv.id}}>{{cerv.nombre}}</option>
-                </select>
-          </div>
-          <div class="col-2">
-            <input type="number" class="form-control" placeholder="cantidad" min = "1" [(ngModel)] = "cantidadCerveza" name="cantidadCerveza" id="cantidadCerveza">
-          </div>
-          <div class="col-2" *ngIf = "!habilitarAgregarCerveza">
-              <button class="btn btn-primary" (click) = "enviarCerveza()"> Guardar</button>
-          </div>
-          <div class="col-2" *ngIf = "habilitarAgregarCerveza">
-            <button class="btn btn-primary" (click) = "habilitarBotonGuardarCerveza()"> Agregar Cerveza </button>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-4">
+        <select class="custom-select" [(ngModel)]="vinoSeleccionado" name="vinoSeleccionado" id="selectVino">
+          <option hidden value="0" selected="selected" disabled>Seleccione vino</option>
+          <option *ngFor="let vino of vinos" value={{vino.id}}>{{vino.nombre}}</option>
+        </select>
       </div>
-
-      <div class="container ">
-        <div class="row">
-          <div class="col-4">
-              <h4>Elegí tu postre</h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-              <select class="custom-select" [(ngModel)] = "postreSeleccionado" name="postreSeleccionado" id="selectPostre">
-                  <option hidden value="0" selected = "selected" disabled>Seleccione postre</option>
-                  <option *ngFor = "let postre of postres" value = {{postre.id}}>{{postre.nombre}}</option>
-                </select>
-          </div>
-              <div class="col-2">
-                  <input type="number" class="form-control" placeholder="cantidad" min = "1" [(ngModel)] = "cantidadPostre" name="cantidadPostre" id="cantidadPostre">
-              </div>
-          <div class="col-2" *ngIf="!habilitarAgregarPostre">
-              <button class="btn btn-primary" (click) = "enviarPostre()"> Guardar</button>
-          </div>
-          <div class="col-2" *ngIf = "habilitarAgregarPostre">
-              <button class="btn btn-primary" (click) = "habilitarBotonGuardarPostre()"> Agregar Postre </button>
-          </div>
-        </div>
+      <div class="col-2">
+        <input type="number" class="form-control" placeholder="cantidad" min="1" [(ngModel)]="cantidadVino"
+          name="cantidadVino" id="cantidadVino">
       </div>
-      <hr>
+      <div class="col-2" *ngIf="!habilitarAgregarVino">
+        <button class="btn btn-primary" (click)="enviarVino()"> Guardar</button>
+      </div>
+      <div class="col-2" *ngIf="habilitarAgregarVino">
+        <button class="btn btn-primary" (click)="habilitarBotonGuardarVino()"> Agregar Vino </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container ">
+    <div class="row">
+      <div class="col-4">
+        <h4>¿Preferís una cerveza artesanal? Elegí la que más te guste: </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <select class="custom-select" [(ngModel)]="cervezaSeleccionada" name="cervezaSeleccionada" id="selectCerveza">
+          <option hidden value="0" selected="selected" disabled>Seleccione cerveza</option>
+          <option *ngFor="let cerv of cervezas" value={{cerv.id}}>{{cerv.nombre}}</option>
+        </select>
+      </div>
+      <div class="col-2">
+        <input type="number" class="form-control" placeholder="cantidad" min="1" [(ngModel)]="cantidadCerveza"
+          name="cantidadCerveza" id="cantidadCerveza">
+      </div>
+      <div class="col-2" *ngIf="!habilitarAgregarCerveza">
+        <button class="btn btn-primary" (click)="enviarCerveza()"> Guardar</button>
+      </div>
+      <div class="col-2" *ngIf="habilitarAgregarCerveza">
+        <button class="btn btn-primary" (click)="habilitarBotonGuardarCerveza()"> Agregar Cerveza </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container ">
+    <div class="row">
+      <div class="col-4">
+        <h4>Elegí tu postre</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <select class="custom-select" [(ngModel)]="postreSeleccionado" name="postreSeleccionado" id="selectPostre">
+          <option hidden value="0" selected="selected" disabled>Seleccione postre</option>
+          <option *ngFor="let postre of postres" value={{postre.id}}>{{postre.nombre}}</option>
+        </select>
+      </div>
+      <div class="col-2">
+        <input type="number" class="form-control" placeholder="cantidad" min="1" [(ngModel)]="cantidadPostre"
+          name="cantidadPostre" id="cantidadPostre">
+      </div>
+      <div class="col-2" *ngIf="!habilitarAgregarPostre">
+        <button class="btn btn-primary" (click)="enviarPostre()"> Guardar</button>
+      </div>
+      <div class="col-2" *ngIf="habilitarAgregarPostre">
+        <button class="btn btn-primary" (click)="habilitarBotonGuardarPostre()"> Agregar Postre </button>
+      </div>
+    </div>
+  </div>
+  <hr>
 </div>
-    <app-codigos-pedidos [listadoDeCodigos] = "codigosDePedido"></app-codigos-pedidos>
-
-   
-
+<app-codigos-pedidos [listadoDeCodigos]="codigosDePedido"></app-codigos-pedidos>

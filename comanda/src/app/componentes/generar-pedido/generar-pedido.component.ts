@@ -53,7 +53,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idProducto = this.productoCocinaSeleccionado;
     this.pedido.cantidad = this.cantidadProductoCocina;
     this.pedido.idCliente = this.idCliente;
-    this.pedido.nombreCliente = this.nombreCliente;
+    //this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {debugger
       var codigo = new Codigo();
@@ -82,7 +82,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idProducto = this.vinoSeleccionado;
     this.pedido.cantidad = this.cantidadVino;
     this.pedido.idCliente = this.idCliente;
-    this.pedido.nombreCliente = this.nombreCliente;
+    //this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
       var codigo = new Codigo();
@@ -111,7 +111,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idProducto = this.cervezaSeleccionada;
     this.pedido.cantidad = this.cantidadCerveza;
     this.pedido.idCliente = this.idCliente;
-    this.pedido.nombreCliente = this.nombreCliente;
+    //this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
       var codigo = new Codigo();
@@ -140,7 +140,7 @@ export class GenerarPedidoComponent implements OnInit {
     this.pedido.idProducto = this.postreSeleccionado;
     this.pedido.cantidad = this.cantidadPostre;
     this.pedido.idCliente = this.idCliente;
-    this.pedido.nombreCliente = this.nombreCliente;
+    //this.pedido.nombreCliente = this.nombreCliente;
 
     this.clienteService.generarPedido(this.pedido).subscribe(res => {
       var codigo = new Codigo();

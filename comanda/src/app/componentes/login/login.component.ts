@@ -68,7 +68,6 @@ export class LoginComponent implements OnInit {
     {
       this.loginService.LoginEmpleado(this.empleado).subscribe(respuesta => {
         this.respuesta = respuesta;
-        console.log(respuesta);
         if(this.respuesta.Estado == "Ok") {
           
           localStorage.setItem('token', this.respuesta.Token);
@@ -119,7 +118,6 @@ export class LoginComponent implements OnInit {
   }
 
   registrarse() {
-    console.log(this.respuesta);
     if(this.nuevoUsuario.usuario != "" && this.nuevoUsuario.clave != "")
     {
       this.loginService.RegistrarEmpleado(this.nuevoUsuario).subscribe(respuesta => {

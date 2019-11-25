@@ -18,6 +18,7 @@ import { MozoComponent } from './componentes/mozo/mozo.component';
 import { AsignarMesaComponent } from './componentes/asignar-mesa/asignar-mesa.component';
 import { BuscarClienteComponent } from './componentes/buscar-cliente/buscar-cliente.component';
 import { PonerClienteEnEsperaComponent } from './componentes/poner-cliente-en-espera/poner-cliente-en-espera.component';
+import { ElegirMesaMozoComponent } from './componentes/elegir-mesa-mozo/elegir-mesa-mozo.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PonerClienteEnEsperaComponent } from './componentes/poner-cliente-en-es
     MozoComponent,
     AsignarMesaComponent,
     BuscarClienteComponent,
-    PonerClienteEnEsperaComponent
+    PonerClienteEnEsperaComponent,
+    ElegirMesaMozoComponent
   ],
   imports: [
     BrowserModule,
