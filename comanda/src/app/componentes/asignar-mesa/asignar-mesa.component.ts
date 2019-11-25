@@ -26,6 +26,14 @@ export class AsignarMesaComponent implements OnInit {
         this.mesasDisponibles = respuesta.Mesas;
         this.verMesasDisponibles = true;
       }
+      else {
+        Swal.fire({
+          title: 'Cliente en Espera',
+          text: "No hay mesas disponibles",
+          confirmButtonColor: '#3085d6',
+        })
+      }
+
     })
   }
 

@@ -36,4 +36,8 @@ export class ClientePedidosService {
   recuperarDatosCliente(idCliente){
     return this.miHttpService.httpGet0('cliente/estado/' + idCliente);
   }
+
+  BuscarCliente(usuario){debugger
+    return this.miHttpService.httpPost0('cliente/buscar/', {'usuario':usuario});
+  }
 }

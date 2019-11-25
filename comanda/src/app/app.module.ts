@@ -16,6 +16,8 @@ import { EstadoPedidosComponent } from './componentes/estado-pedidos/estado-pedi
 import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 import { MozoComponent } from './componentes/mozo/mozo.component';
 import { AsignarMesaComponent } from './componentes/asignar-mesa/asignar-mesa.component';
+import { BuscarClienteComponent } from './componentes/buscar-cliente/buscar-cliente.component';
+import { PonerClienteEnEsperaComponent } from './componentes/poner-cliente-en-espera/poner-cliente-en-espera.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AsignarMesaComponent } from './componentes/asignar-mesa/asignar-mesa.co
     EstadoPedidosComponent,
     EncuestaComponent,
     MozoComponent,
-    AsignarMesaComponent
+    AsignarMesaComponent,
+    BuscarClienteComponent,
+    PonerClienteEnEsperaComponent
   ],
   imports: [
     BrowserModule,
