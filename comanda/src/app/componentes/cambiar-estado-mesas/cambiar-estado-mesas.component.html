@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Cambiar estado de las mesas</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="mesasAsignadas.length > 0" style="margin-top: 5%;">
+    <div style="text-align: center; color: indigo; background-color: lightgray; height: 40px;">
+        <h4>Mesas Asignadas</h4>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mesa</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Cambiar estado </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesa of mesasAsignadas">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="clienteEsperandoPedido(mesa.codigo)">Proximo estado</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="mesasClienteEsperandoPedido.length > 0" style="margin-top: 10%;">
+    <div style="text-align: center; color: indigo; background-color: lightgray; height: 40px;">
+        <h4>Mesas con cliente esperando pedido</h4>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mesa</th>
+                <th scope="col">Codigo</th>
+                <th scope="col"> Cambiar estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesa of mesasClienteEsperandoPedido">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="clienteComiendo(mesa.codigo)">Proximo estado</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="mesasClienteComiendo.length > 0" style="margin-top: 10%;">
+    <div style="text-align: center; color: indigo; background-color: lightgray; height: 40px;">
+        <h4>Mesas con clientes comiendo</h4>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mesa</th>
+                <th scope="col">Codigo</th>
+                <th scope="col"> Cambiar estado </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesa of mesasClienteComiendo">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="clientePagando(mesa.codigo)">Proximo estado</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>

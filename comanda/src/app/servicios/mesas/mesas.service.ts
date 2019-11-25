@@ -21,10 +21,19 @@ export class MesasService {
   }
 
   CambiarEstadoMesaAsignada(codigoMesa, idCliente){
-    return this.miHttpService.httpPost0('mesa/asignada/', {
-                                                            'codigo':codigoMesa,
-                                                            'idCliente': idCliente
-                                                          });
+    return this.miHttpService.httpPost0('mesa/asignada/', { 'codigo':codigoMesa, 'idCliente': idCliente });
+  }
+
+  CambiarEstadoClienteEsperandoPedido(codigoMesa){
+    return this.miHttpService.httpPost0('mesa/estado/esperando/', { 'codigo': codigoMesa });
+  }
+
+  CambiarEstadoClienteComiendo(codigoMesa){
+    return this.miHttpService.httpPost0('mesa/estado/comiendo/', { 'codigo': codigoMesa });
+  }
+
+  CambiarEstadoClientePagando(codigoMesa){
+    return this.miHttpService.httpPost0('mesa/estado/pagando/', { 'codigo' : codigoMesa});
   }
 
   ObtenerClientesEnEspera(){
@@ -33,5 +42,9 @@ export class MesasService {
 
   ObtenerMesasDisponiblesMozo(){
     return this.miHttpService.httpGet0('mesa/disponibles/mozo/');
+  }
+
+  ObtenerMesasConEstado(idEstado){
+    return this.miHttpService.httpGet0('mesa/estado/' + idEstado);
   }
 }
