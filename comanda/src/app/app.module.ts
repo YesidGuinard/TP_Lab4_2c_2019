@@ -20,6 +20,7 @@ import { BuscarClienteComponent } from './componentes/buscar-cliente/buscar-clie
 import { PonerClienteEnEsperaComponent } from './componentes/poner-cliente-en-espera/poner-cliente-en-espera.component';
 import { ElegirMesaMozoComponent } from './componentes/elegir-mesa-mozo/elegir-mesa-mozo.component';
 import { CambiarEstadoMesasComponent } from './componentes/cambiar-estado-mesas/cambiar-estado-mesas.component';
+import { CocineroComponent } from './componentes/cocinero/cocinero.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CambiarEstadoMesasComponent } from './componentes/cambiar-estado-mesas/
     BuscarClienteComponent,
     PonerClienteEnEsperaComponent,
     ElegirMesaMozoComponent,
-    CambiarEstadoMesasComponent
+    CambiarEstadoMesasComponent,
+    CocineroComponent
   ],
   imports: [
     BrowserModule,

@@ -23,13 +23,9 @@
   <!-- Sidebar/menu -->
   <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
     <div class="w3-container">
-      <a href="#" (click)="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
-        title="close menu">
-        <i class="fa fa-remove"></i>
-      </a>
       <img src="{{foto}}" style="width:45%;" class="w3-round"><br><br>
-      <!-- Llamar a imagen de registro de usuario-->
-      <h4><b>MOZO</b></h4>
+      <h4><b>Tipo de usuario: Mozo</b></h4>
+      <h4><b>Nombre de usuario: {{nombreMozo}}</b></h4>
     </div>
     <div class="w3-bar-block">
       <a href="/mozo/{{idMozo}}#asignarMesa" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
@@ -56,39 +52,40 @@
 
     <!-- Header -->
     <header id="titulo">
-      <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;"
-          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
-      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i
-          class="fa fa-bars"></i></span>
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i class="fa fa-bars"></i></span>
       <div class="w3-container">
         <h1><b>Gestion de pedidos</b></h1>
       </div>
     </header>
 
     <!-- Asignar Mesa -->
-    <app-asignar-mesa [listadoClientesEnEspera]="clientesEnEspera" (enviarMesaAsignada)="recibeMesasAsignadas($event)"
-      id="asignarMesa"></app-asignar-mesa>
+    <app-asignar-mesa [listadoClientesEnEspera]="clientesEnEspera" 
+                      (enviarMesaAsignada)="recibeMesasAsignadas($event)"
+                      id="asignarMesa">
+    </app-asignar-mesa>
 
     <!--Buscar cliente-->
     <app-buscar-cliente (enviarIdCliente)="recibeIdCliente($event)" id="buscarCliente"></app-buscar-cliente>
 
     <!-- Poner cliente en espera -->
-    <app-poner-cliente-en-espera [idCliente]="clienteId" (enviarClientesEnEspera)="recibeClientesEnEspera($event)"
-      id="agregarListaEspera">
+    <app-poner-cliente-en-espera  [idCliente]="clienteId" 
+                                  (enviarClientesEnEspera)="recibeClientesEnEspera($event)"
+                                  id="agregarListaEspera">
     </app-poner-cliente-en-espera>
 
     <!-- Elegir mesa-->
-    <app-elegir-mesa-mozo [numeroCliente]="clienteId" (enviarIdMesaAsignada)="habilitarGenerarPedido($event)"
-      id="cargarPedido">
+    <app-elegir-mesa-mozo [numeroCliente]="clienteId" 
+                          (enviarIdMesaAsignada)="habilitarGenerarPedido($event)"
+                          id="cargarPedido">
     </app-elegir-mesa-mozo>
 
     <!-- Pedido-->
     <app-generar-pedido [idMesaSeleccionadaPedido]="idMesaSeleccionada" [idCliente]="clienteId"
-      [codigosDePedido]="pedidos" (pedidos)="recibePedidos($event)">
+                        [codigosDePedido]="pedidos"   
+                        (pedidos)="recibePedidos($event)">
     </app-generar-pedido>
 
     <!-- Cambiar estado -->
-
     <app-cambiar-estado-mesas [mesasAsignadas]="listadoMesasAsignadas" id="cambiarEstados"></app-cambiar-estado-mesas>
 
 
