@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MesasService } from 'src/app/servicios/mesas/mesas.service';
 import { ReplaySubject } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class CambiarEstadoMesasComponent implements OnInit {
 
-  mesasAsignadas = new Array<any>();
+  @Input() mesasAsignadas;
   mesasClienteEsperandoPedido = new Array<any>();
   mesasClienteComiendo = new Array<any>();
 
@@ -89,11 +89,6 @@ export class CambiarEstadoMesasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mesasService.ObtenerMesasConEstado(5).subscribe(respuesta => {
-      if (respuesta.Estado == "Ok") {
-        this.mesasAsignadas = respuesta.Mesas;
-      }
-    })
     this.mesasService.ObtenerMesasConEstado(1).subscribe(respuesta => {
       if (respuesta.Estado == "Ok") {
         this.mesasClienteEsperandoPedido = respuesta.Mesas;

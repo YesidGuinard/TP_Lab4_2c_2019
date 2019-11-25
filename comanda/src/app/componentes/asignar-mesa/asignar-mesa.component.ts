@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MesasService } from 'src/app/servicios/mesas/mesas.service';
 import Swal from 'sweetalert2';
 
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class AsignarMesaComponent implements OnInit {
 
+  @Output() enviarMesaAsignada = new EventEmitter<any>();
   @Input() listadoClientesEnEspera;
   idClienteEnEspera;
   clienteElegido; 
@@ -39,6 +40,7 @@ export class AsignarMesaComponent implements OnInit {
 
   asignarMesa(codigoMesa){
     this.mesasService.CambiarEstadoMesaAsignada(codigoMesa, this.idClienteEnEspera).subscribe(respuesta => {
+      this.enviarMesaAsignada.emit(true);
       Swal.fire({
         position: 'top-end',
         title: respuesta.Mensaje,

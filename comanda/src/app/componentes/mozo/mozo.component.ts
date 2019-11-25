@@ -17,6 +17,7 @@ export class MozoComponent implements OnInit {
   clienteEstado;
   codigoMesaSeleccionada;
   pedidos = new Array<any>();
+  listadoMesasAsignadas = new Array<any>();
 
 
   constructor(private mesasService: MesasService, private rutaActiva: ActivatedRoute) { }
@@ -27,6 +28,16 @@ export class MozoComponent implements OnInit {
 
   recibeClientesEnEspera(clientes){
     this.clientesEnEspera = clientes; 
+  }
+
+  recibeMesasAsignadas(event){
+    if(event) {
+      this.mesasService.ObtenerMesasConEstado(5).subscribe(respuesta => {
+        if (respuesta.Estado == "Ok") {
+          this.listadoMesasAsignadas = respuesta.Mesas;
+        }
+      })
+    }    
   }
 
   recibePedidos(pedidos){
@@ -43,6 +54,11 @@ export class MozoComponent implements OnInit {
     this.mesasService.ObtenerClientesEnEspera().subscribe(respuesta => {
       if(respuesta.Estado == "Clientes")
         this.clientesEnEspera = respuesta.Clientes; 
+    })
+    this.mesasService.ObtenerMesasConEstado(5).subscribe(respuesta => {
+      if (respuesta.Estado == "Ok") {
+        this.listadoMesasAsignadas = respuesta.Mesas;
+      }
     })
   }
 
