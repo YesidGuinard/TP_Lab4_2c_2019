@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   listaTiposDeEmpleado: Array<any>;
   habilitarBotonRegistro: boolean = false; 
   jwtDecoder: JwtHelperService = new JwtHelperService();
+  selectedFile = null; 
+  mensajeResitro;
 
   constructor(private loginService: LoginService, private router: Router) {
     this.empleado = new Empleado(); 
@@ -106,30 +108,44 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  alertaUsuarioRegistrado() {
+  alertaUsuarioRegistrado(mensaje) {
     Swal.fire({ 
       title: 'Registro de usuario',
-      text: "Usuario registrado correctamente",
-      type: 'success',
+      text: mensaje,
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
       confirmButtonText: 'Ok'
     })
+  }
+
+  onFileSelected(event){
+    this.selectedFile = event.target.files[0];
   }
 
   registrarse() {
     if(this.nuevoUsuario.usuario != "" && this.nuevoUsuario.clave != "")
     {
       this.loginService.RegistrarEmpleado(this.nuevoUsuario).subscribe(respuesta => {
-        // this.respuesta = JSON.parse(respuesta);
-        if(respuesta.Estado == "Ok") {
-          this.alertaUsuarioRegistrado();
-        }
-        else
-          this.alertaUsuarioInvalido();
+        this.mensajeResitro = respuesta.Mensaje;
       });
+
+      if(this.selectedFile !=  null)
+      {
+        const fd = new FormData();
+        fd.append('image', this.selectedFile, this.selectedFile.name);
+
+        this.loginService.GuardarFoto(fd).subscribe(respuesta => {
+            if(respuesta.Estado == 'Error'){
+              this.mensajeResitro = this.mensajeResitro + '. ' + respuesta.Mensaje;
+            }
+            this.alertaUsuarioRegistrado(this.mensajeResitro);
+        }); 
+      }
+      else
+        this.alertaUsuarioRegistrado(this.mensajeResitro);
+      
+      this.nuevoUsuario = new Empleado();
     }
-  }x
+  }
 
   resolved(captchaResponse: string) {
     // console.log(`Resolved captcha with response: ${captchaResponse}`);

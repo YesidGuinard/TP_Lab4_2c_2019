@@ -4,6 +4,7 @@ import { Pedido } from '../../clases/pedido';
 import { Codigo } from '../../clases/codigo';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LoginService } from 'src/app/servicios/login/login.service';
 
 @Component({
   selector: 'app-cliente',
@@ -13,14 +14,15 @@ import Swal from 'sweetalert2';
 })
 export class ClienteComponent implements OnInit {
  
-  nombreCliente: string; 
+  nombreCliente: string;
+  foto; 
   idMesaSeleccionada;
   codigoMesaSeleccionada;
   clienteId;
   pedidos: Array<Codigo> = new Array<Codigo>();
   clienteEstado;
 
-  constructor(private clientePedidoService: ClientePedidosService, private rutaActiva: ActivatedRoute, private router: Router) {}
+  constructor(private loginService: LoginService, private clientePedidoService: ClientePedidosService, private rutaActiva: ActivatedRoute, private router: Router) {}
 
    habilitarGenerarPedido(idMesa) {
      this.idMesaSeleccionada = idMesa;
@@ -66,6 +68,12 @@ export class ClienteComponent implements OnInit {
   ngOnInit() {
     this.nombreCliente = localStorage.getItem('usuario');
     this.clienteId = this.rutaActiva.snapshot.params.idCliente;
+    this.loginService.BuscarUsuario(this.clienteId).subscribe(respuesta => {
+      if (respuesta.Estado == "Ok") {
+        this.nombreCliente = respuesta.Usuario.usuario;
+        this.foto = respuesta.Usuario.foto;
+      }
+    })
     this.clientePedidoService.recuperarDatosCliente(this.clienteId).subscribe(respuesta=>{
       if(respuesta.Estado == "Espera")
       {

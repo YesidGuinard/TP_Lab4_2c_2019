@@ -20,6 +20,11 @@ export class MiHttpService {
     .pipe(respuesta => respuesta)
   }
 
+  public httpPostGuardarFoto( metodo: string, objeto: any): Observable<any> {
+    return this.http.post(this.url + metodo, objeto)
+    .pipe(respuesta => respuesta)
+  } 
+
   public httpGet0( metodo: string): Observable<any> {
     return this.http.get(this.url + metodo)
     .pipe(respuesta => respuesta)

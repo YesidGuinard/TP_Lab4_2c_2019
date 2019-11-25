@@ -20,8 +20,16 @@ export class LoginService {
     return this.miHttpService.httpPost0('empleado/alta/', empleado);
   }
 
+  BuscarUsuario(idUsuario){
+    return this.miHttpService.httpGet0('usuario/buscar/' + idUsuario);
+  }
+
   ObtenerTiposDeEmpleados() {
     return this.miHttpService.httpGet0('tiposDeEmpleado/');
+  }
+
+  GuardarFoto(foto){
+    return this.miHttpService.httpPostGuardarFoto('/usuario/foto/', foto);
   }
 
   loggedIn(){
