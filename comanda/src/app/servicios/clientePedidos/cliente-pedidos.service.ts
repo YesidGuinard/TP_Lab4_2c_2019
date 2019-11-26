@@ -37,8 +37,8 @@ export class ClientePedidosService {
     return this.miHttpService.httpGet0('cliente/estado/' + idCliente);
   }
 
-  BuscarCliente(usuario){debugger
-    return this.miHttpService.httpPost0('cliente/buscar/', {'usuario':usuario});
+  BuscarCliente(usuario, tipoUsuario){
+    return this.miHttpService.httpPost0('cliente/buscar/', {'usuario':usuario, 'tipoUsuario': tipoUsuario});
   }
 
   MozoRecuperaDatosCliente(idCliente){

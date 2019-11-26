@@ -21,6 +21,8 @@ export class MozoComponent implements OnInit {
   codigoMesaSeleccionada;
   pedidos = new Array<any>();
   listadoMesasAsignadas = new Array<any>();
+  tituloBuscarCliente = "Buscar cliente";
+  tipoUsuarioABuscar = "cliente";
 
 
   constructor(private mesasService: MesasService, private rutaActiva: ActivatedRoute, private loginService: LoginService,

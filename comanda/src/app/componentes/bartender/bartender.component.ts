@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/servicios/login/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { EmpleadosService } from 'src/app/servicios/empleados/empleados.service';
 
 @Component({
   selector: 'app-bartender',
@@ -13,9 +14,45 @@ export class BartenderComponent implements OnInit {
   idBartender;
   nombreBartender;
   foto;
+  pedidosPendientes = new Array<any>();
+  pedidosEnPreparacion = new Array<any>();
 
-  constructor( private loginService: LoginService,  private rutaActiva: ActivatedRoute, private router: Router) { }
+  constructor(private loginService: LoginService,  private rutaActiva: ActivatedRoute,  private router: Router, private empleadosService: EmpleadosService) { }
 
+  recibeSeTomoPedido(event) {
+    if(event) {
+      this.actualizarPedidosPendientes();
+      this.actualizarPedidosEnPreparacion();
+    }
+  }
+
+  recibeServirPedido(event) {
+    if(event) {
+      this.actualizarPedidosEnPreparacion();
+    }
+  }
+
+  actualizarPedidosPendientes(){
+    this.empleadosService.VerPedidosPendientes(1).subscribe(respuesta => {
+      if(respuesta.Estado == "Ok"){
+        this.pedidosPendientes = respuesta.Pedidos;
+      }
+      else if(respuesta.Estado == "SinPedidos") {
+        this.pedidosPendientes = new Array<any>();
+      }
+    })
+  }
+
+  actualizarPedidosEnPreparacion(){
+    this.empleadosService.VerPedidosPendientes(2).subscribe(respuesta => {
+      if(respuesta.Estado == "Ok"){
+        this.pedidosEnPreparacion = respuesta.Pedidos;
+      }
+      else if(respuesta.Estado == "SinPedidos") {
+        this.pedidosEnPreparacion = new Array<any>();
+      }
+    })
+  }
   cerrarSesion(){
     Swal.fire({
       title: 'Cerrar sesion',
@@ -40,6 +77,8 @@ export class BartenderComponent implements OnInit {
         this.foto = respuesta.Usuario.foto;
       }
     })
+    this.actualizarPedidosPendientes();
+    this.actualizarPedidosEnPreparacion();
   }
 
   w3_open() {

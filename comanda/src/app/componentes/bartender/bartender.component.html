@@ -28,12 +28,10 @@
       <h4><b>Nombre de usuario: {{nombreBartender}}</b></h4>
     </div>
     <div class="w3-bar-block">
-      <a href="/bartender/{{idBartender}}#asignarMesa" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-th-large fa-fw w3-margin-right"></i>ASIGNAR MESA</a>
-      <a href="/bartender/{{idBartender}}#buscarCliente" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-th-large fa-fw w3-margin-right"></i>BUSCAR CLIENTE</a>
-      <a href="/bartender/{{idBartender}}#agregarListaEspera" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-th-large fa-fw w3-margin-right"></i>AGREGAR A LISTA DE ESPERA</a>
+      <a href="/bartender/{{idBartender}}#pendientes" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+          class="fa fa-th-large fa-fw w3-margin-right"></i>PEDIDOS PENDIENTES</a>
+      <a href="/bartender/{{idBartender}}#enPreparacion" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+          class="fa fa-th-large fa-fw w3-margin-right"></i>PEDIDOS EN PREPARACION</a>
       <a class="w3-bar-item w3-button w3-padding" style="margin-top: 20%;" (click)="cerrarSesion()"> <i
           class="fa fa-th-large fa-fw w3-margin-right"></i>CERRAR SESION</a>
     </div>
@@ -53,6 +51,19 @@
         <h1><b>Gestion de pedidos</b></h1>
       </div>
     </header>
+
+    <!-- Ver pedidos pendientes -->
+      <app-pedidos-pendientes [pedidos] = "pedidosPendientes" 
+                              (enviarSeTomoPedido) = "recibeSeTomoPedido($event)"
+                              id="pendientes"> 
+      </app-pedidos-pendientes>
+
+    <!-- Pedidos en preparacion -->
+
+    <app-pedidos-en-preparacion [pedidos] = "pedidosEnPreparacion" 
+                                (enviarServirPedido) = "recibeServirPedido($event)"
+                                id="enPreparacion">
+    </app-pedidos-en-preparacion>
 
     <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
     </div>

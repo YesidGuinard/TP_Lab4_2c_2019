@@ -27,6 +27,7 @@ import { PasteleroComponent } from './componentes/pastelero/pastelero.component'
 import { PedidosPendientesComponent } from './componentes/pedidos-pendientes/pedidos-pendientes.component';
 import { PedidosEnPreparacionComponent } from './componentes/pedidos-en-preparacion/pedidos-en-preparacion.component';
 import { TomarPedidoComponent } from './directivas/tomar-pedido/tomar-pedido.component';
+import { AsignarTipoUsuarioComponent } from './componentes/asignar-tipo-usuario/asignar-tipo-usuario.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { TomarPedidoComponent } from './directivas/tomar-pedido/tomar-pedido.com
     PasteleroComponent,
     PedidosPendientesComponent,
     PedidosEnPreparacionComponent,
-    TomarPedidoComponent
+    TomarPedidoComponent,
+    AsignarTipoUsuarioComponent
   ],
   imports: [
     BrowserModule,

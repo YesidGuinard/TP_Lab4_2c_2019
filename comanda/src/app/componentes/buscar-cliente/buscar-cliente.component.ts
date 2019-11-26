@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ClientePedidosService } from '../../servicios/clientePedidos/cliente-pedidos.service';
 import Swal from 'sweetalert2';
 
@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 export class BuscarClienteComponent implements OnInit {
 
   @Output() enviarIdCliente = new EventEmitter<any>();
+  @Input() titulo;
+  @Input() tipoUsuario;
   nombreCliente: string; 
   idCliente; 
 
@@ -18,7 +20,7 @@ export class BuscarClienteComponent implements OnInit {
 
   buscarCliente(){
     this.nombreCliente.trim().toLowerCase();
-    this.clienteService.BuscarCliente(this.nombreCliente).subscribe(respuesta => {
+    this.clienteService.BuscarCliente(this.nombreCliente, this.tipoUsuario).subscribe(respuesta => {
       if(respuesta.Estado == 'Ok'){
         this.idCliente = respuesta.Cliente.id;
         this.enviarIdCliente.emit(this.idCliente);

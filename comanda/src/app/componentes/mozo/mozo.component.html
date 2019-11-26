@@ -65,7 +65,10 @@
     </app-asignar-mesa>
 
     <!--Buscar cliente-->
-    <app-buscar-cliente (enviarIdCliente)="recibeIdCliente($event)" id="buscarCliente"></app-buscar-cliente>
+    <app-buscar-cliente [titulo] = "tituloBuscarCliente" 
+                        [tipoUsuario] = "tipoUsuarioABuscar"
+                        (enviarIdCliente)="recibeIdCliente($event)" 
+                        id="buscarCliente"></app-buscar-cliente>
 
     <!-- Poner cliente en espera -->
     <app-poner-cliente-en-espera  [idCliente]="clienteId" 

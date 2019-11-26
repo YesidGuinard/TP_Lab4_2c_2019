@@ -32,6 +32,10 @@ export class LoginService {
     return this.miHttpService.httpPostGuardarFoto('/usuario/foto/', foto);
   }
 
+  AsignarTipoUsuario(idUsuario, idTipoUsuario){
+    return this.miHttpService.httpPost1('usuario/asignarTipo/', {'idUsuario':idUsuario, 'idTipoUsuario':idTipoUsuario});
+  }
+
   loggedIn(){
     var token = localStorage.getItem('token');
     if(this.jwtDecoder.isTokenExpired(token))

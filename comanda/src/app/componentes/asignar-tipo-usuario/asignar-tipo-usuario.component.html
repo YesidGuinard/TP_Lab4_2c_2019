@@ -1,0 +1,15 @@
+<app-buscar-cliente [titulo]="tituloBuscarUsuario" 
+                    [tipoUsuario]="tipoUsuarioABuscar"
+                    (enviarIdCliente)=recibeIdUsuario($event)>
+</app-buscar-cliente>
+
+<div class="col-4" *ngIf="mostrarTipos">
+    <label for="tipoUsuario">Seleccione tipo de usuario a asignar</label>
+    <select class="custom-select" [(ngModel)]="idTipoSeleccionado" name="tipoUsuario" id="tipoUsuario">
+        <option hidden value="0" selected="selected" disabled>Seleccione tipo de usuario</option>
+        <option *ngFor="let tipo of listaTipoUsuarios" value={{tipo.id}}>{{tipo.tipoEmpleado}}</option>
+    </select>
+    <div style="margin-top: 5%">
+        <button type="button" class="btn btn-primary" (click)="asignar()">Asignar</button>
+    </div>
+</div> 
