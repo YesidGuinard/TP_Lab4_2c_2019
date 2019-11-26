@@ -21,11 +21,18 @@ export class PonerClienteEnEsperaComponent implements OnInit {
           title: 'Cliente en Espera',
           text: "El cliente ha sido agregado a la lista de espera",
           confirmButtonColor: '#3085d6',
-        })
+        })        
         this.mesaService.ObtenerClientesEnEspera().subscribe(respuesta => {
           if (respuesta.Estado == "Clientes")
             this.enviarClientesEnEspera.emit(respuesta.Clientes);
         })
+      }
+      else if(respuesta.Estado == "Alerta") {
+        Swal.fire({
+          title: 'Cliente en Espera',
+          text: respuesta.Mensaje,
+          confirmButtonColor: '#3085d6',
+        })     
       }
     })
   }

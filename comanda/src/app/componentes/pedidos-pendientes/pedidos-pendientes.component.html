@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Pedidos Pendientes</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="pedidos.length == 0">
+    <div class="row">
+        <div class="col-12" style="text-align: center; color:gray; background-color:lightgray;">
+            <h4>No hay pedidos pendientes</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="pedidos.length > 0">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Codigo de Pedido</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Tiempo estimado (en minutos)</th>
+                <th scope="col">Tomar Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ped of pedidos" app-tomar-pedido [pedido] = "ped" (enviarSeTomoUnPedido) = "recibeSeTomoPedido($event)"> </tr>
+
+            <!-- <tr *ngFor="let itemEnt of listadoEntidades2" app-resaltar [item]= "itemEnt" (inscripcion)="altaEntidad1_2($event)"> </tr> -->
+        </tbody>
+    </table>
+</div>
+
+<div class="col" style="margin-top: 5%;">
+    <button type="button" class="btn btn-primary" (click) = "actualizarPedidosPendientes()"> Actualizar Pedidos</button>
+</div>
+
+<hr>

@@ -1,0 +1,6 @@
+<td>{{pedido.producto}}</td>
+<td>{{pedido.cantidad}}</td>
+<td>{{pedido.codigo}}</td>
+<td>{{pedido.mesa}}</td>
+<td>  <input type="number" name="tiempo" id="tiempo" [(ngModel)] = "tiempoEstimado"> </td>
+<td><button class="btn btn-primary" (click)="tomarPedido(pedido.codigo)">Tomar</button></td>

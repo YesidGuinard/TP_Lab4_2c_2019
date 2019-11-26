@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Pedidos en preparación</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="pedidos.length == 0">
+    <div class="row">
+        <div class="col-12" style="text-align: center; color:gray; background-color:lightgray;">
+            <h4>No hay pedidos en preparación</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="pedidos.length > 0">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Codigo de Pedido</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Servir Pedido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of pedidos">
+                <td>{{pedido.producto}}</td>
+                <td>{{pedido.cantidad}}</td>
+                <td>{{pedido.codigo}}</td>
+                <td>{{pedido.mesa}}</td>
+                <td><button class="btn btn-primary" (click)="ServirPedido()">Servir</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>

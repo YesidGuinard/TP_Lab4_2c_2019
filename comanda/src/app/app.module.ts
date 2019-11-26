@@ -24,6 +24,9 @@ import { CocineroComponent } from './componentes/cocinero/cocinero.component';
 import { BartenderComponent } from './componentes/bartender/bartender.component';
 import { CerveceroComponent } from './componentes/cervecero/cervecero.component';
 import { PasteleroComponent } from './componentes/pastelero/pastelero.component';
+import { PedidosPendientesComponent } from './componentes/pedidos-pendientes/pedidos-pendientes.component';
+import { PedidosEnPreparacionComponent } from './componentes/pedidos-en-preparacion/pedidos-en-preparacion.component';
+import { TomarPedidoComponent } from './directivas/tomar-pedido/tomar-pedido.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { PasteleroComponent } from './componentes/pastelero/pastelero.component'
     CocineroComponent,
     BartenderComponent,
     CerveceroComponent,
-    PasteleroComponent
+    PasteleroComponent,
+    PedidosPendientesComponent,
+    PedidosEnPreparacionComponent,
+    TomarPedidoComponent
   ],
   imports: [
     BrowserModule,

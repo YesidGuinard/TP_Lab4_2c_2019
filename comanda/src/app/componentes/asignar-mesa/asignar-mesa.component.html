@@ -1,62 +1,61 @@
 <div class="container">
     <div class="row">
-        <div class="col-12">        
+        <div class="col-12">
             <h3>Clientes en espera</h3>
         </div>
     </div>
 </div>
 
-<div class="container" *ngIf ="listadoClientesEnEspera.length == 0">
-        <div class="row">
-            <div class="col-12" style="text-align: center; color:gray; background-color:lightgray;">        
-                <h4>No hay clientes en espera</h4>
-            </div>
+<div class="container" *ngIf="listadoClientesEnEspera.length == 0">
+    <div class="row">
+        <div class="col-12" style="text-align: center; color:gray; background-color:lightgray;">
+            <h4>No hay clientes en espera</h4>
         </div>
     </div>
+</div>
 
-<div class="container" *ngIf ="listadoClientesEnEspera.length > 0"> 
+<div class="container" *ngIf="listadoClientesEnEspera.length > 0">
     <h4>Asignar Mesa</h4>
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th scope="col">Numero de llegada</th>
-            <th scope="col">Numero de cliente</th>
-            <th scope="col">Nombre de cliente</th>
-            <th scope="col">Elegir cliente</th>
-        </tr>
+            <tr>
+                <th scope="col">Numero de llegada</th>
+                <th scope="col">Numero de cliente</th>
+                <th scope="col">Nombre de cliente</th>
+                <th scope="col">Elegir cliente</th>
+            </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let cliente of listadoClientesEnEspera">
-            <td>{{cliente.id}}</td>
-            <td>{{cliente.idCliente}}</td>
-            <td>{{cliente.usuario}}</td>
-            <td><button class="btn btn-primary" (click)="elegirCliente(cliente.idCliente)">Elegir</button></td>
-        </tr>
+            <tr *ngFor="let cliente of listadoClientesEnEspera">
+                <td>{{cliente.id}}</td>
+                <td>{{cliente.idCliente}}</td>
+                <td>{{cliente.usuario}}</td>
+                <td><button class="btn btn-primary" (click)="elegirCliente(cliente.idCliente)">Elegir</button></td>
+            </tr>
         </tbody>
     </table>
 </div>
 
-<div class="container" *ngIf ="mesasDisponibles.length > 0 && verMesasDisponibles"> 
-    <div class="col-12">        
+<div class="container" *ngIf="mesasDisponibles.length > 0 && verMesasDisponibles">
+    <div class="col-12">
         <h3>Cliente elegido: {{clienteElegido}}</h3>
     </div>
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th scope="col">Numero de mesa</th>
-            <th scope="col">Codigo de mesa</th>
-            <th scope="col">Asignar mesa</th>
-        </tr>
+            <tr>
+                <th scope="col">Numero de mesa</th>
+                <th scope="col">Codigo de mesa</th>
+                <th scope="col">Asignar mesa</th>
+            </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let mesa of mesasDisponibles">
-            <td>{{mesa.id}}</td>
-            <td>{{mesa.codigo}}</td>
-            <td><button class="btn btn-primary" (click)="asignarMesa(mesa.codigo)">Asignar</button></td>
-        </tr>
+            <tr *ngFor="let mesa of mesasDisponibles">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="asignarMesa(mesa.codigo)">Asignar</button></td>
+            </tr>
         </tbody>
     </table>
 </div>
 
 <hr>
-
