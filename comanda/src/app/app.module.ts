@@ -28,6 +28,7 @@ import { PedidosPendientesComponent } from './componentes/pedidos-pendientes/ped
 import { PedidosEnPreparacionComponent } from './componentes/pedidos-en-preparacion/pedidos-en-preparacion.component';
 import { TomarPedidoComponent } from './directivas/tomar-pedido/tomar-pedido.component';
 import { AsignarTipoUsuarioComponent } from './componentes/asignar-tipo-usuario/asignar-tipo-usuario.component';
+import { CerrarMesaComponent } from './componentes/cerrar-mesa/cerrar-mesa.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AsignarTipoUsuarioComponent } from './componentes/asignar-tipo-usuario/
     PedidosPendientesComponent,
     PedidosEnPreparacionComponent,
     TomarPedidoComponent,
-    AsignarTipoUsuarioComponent
+    AsignarTipoUsuarioComponent,
+    CerrarMesaComponent
   ],
   imports: [
     BrowserModule,

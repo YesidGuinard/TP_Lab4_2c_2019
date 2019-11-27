@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Cerrar mesa</h3>
+            <p>Se muestran todas las mesas en condiciones de ser cerradas</p>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="mesasParaCerrar.length > 0" style="margin-top: 5%;">
+    <div style="text-align: center; color: indigo; background-color: lightgray; height: 40px;">
+        <h4>Mesas para cerrar</h4>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Mesa</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Cerrar mesa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mesa of mesasParaCerrar">
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.codigo}}</td>
+                <td><button class="btn btn-primary" (click)="cerrarMesa(mesa.codigo)">Cerrar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
