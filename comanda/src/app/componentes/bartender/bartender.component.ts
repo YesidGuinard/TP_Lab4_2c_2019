@@ -53,6 +53,7 @@ export class BartenderComponent implements OnInit {
       }
     })
   }
+  
   cerrarSesion(){
     Swal.fire({
       title: 'Cerrar sesion',
