@@ -13,6 +13,7 @@ export class CerveceroComponent implements OnInit {
 
   idCervecero;
   nombreCervecero;
+  idSector;
   foto;
   pedidosPendientes = new Array<any>();
   pedidosEnPreparacion = new Array<any>();
@@ -33,7 +34,7 @@ export class CerveceroComponent implements OnInit {
   }
 
   actualizarPedidosPendientes(){
-    this.empleadosService.VerPedidosPendientes(1).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(1, this.idSector).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidosPendientes = respuesta.Pedidos;
       }
@@ -44,7 +45,7 @@ export class CerveceroComponent implements OnInit {
   }
 
   actualizarPedidosEnPreparacion(){
-    this.empleadosService.VerPedidosPendientes(2).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(2, this.idSector).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidosEnPreparacion = respuesta.Pedidos;
       }
@@ -75,11 +76,13 @@ export class CerveceroComponent implements OnInit {
     this.loginService.BuscarUsuario(this.idCervecero).subscribe(respuesta => {
       if (respuesta.Estado == "Ok") {
         this.nombreCervecero = respuesta.Usuario.usuario;
+        this.idSector = respuesta.Usuario.id_sector;
         this.foto = respuesta.Usuario.foto;
+
+        this.actualizarPedidosPendientes();
+        this.actualizarPedidosEnPreparacion();
       }
     })
-    this.actualizarPedidosPendientes();
-    this.actualizarPedidosEnPreparacion();
   }
 
   w3_open() {

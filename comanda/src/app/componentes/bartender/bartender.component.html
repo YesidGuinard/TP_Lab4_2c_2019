@@ -53,15 +53,17 @@
     </header>
 
     <!-- Ver pedidos pendientes -->
-      <app-pedidos-pendientes [pedidos] = "pedidosPendientes" 
-                              (enviarSeTomoPedido) = "recibeSeTomoPedido($event)"
-                              id="pendientes"> 
-      </app-pedidos-pendientes>
+    <app-pedidos-pendientes [pedidos]="pedidosPendientes" 
+                            [sectorId] = "idSector"
+                            (enviarSeTomoPedido)="recibeSeTomoPedido($event)"
+                            id="pendientes">
+    </app-pedidos-pendientes>
 
     <!-- Pedidos en preparacion -->
 
-    <app-pedidos-en-preparacion [pedidos] = "pedidosEnPreparacion" 
-                                (enviarServirPedido) = "recibeServirPedido($event)"
+    <app-pedidos-en-preparacion [pedidos]="pedidosEnPreparacion"
+                                [sectorId] = "idSector" 
+                                (enviarServirPedido)="recibeServirPedido($event)"
                                 id="enPreparacion">
     </app-pedidos-en-preparacion>
 

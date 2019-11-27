@@ -13,6 +13,7 @@ export class CocineroComponent implements OnInit {
 
   idCocinero;
   nombreCocinero;
+  idSector;
   foto; 
   pedidosPendientes = new Array<any>();
   pedidosEnPreparacion = new Array<any>();
@@ -33,7 +34,7 @@ export class CocineroComponent implements OnInit {
   }
 
   actualizarPedidosPendientes(){
-    this.empleadosService.VerPedidosPendientes(1).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(1, this.idSector).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidosPendientes = respuesta.Pedidos;
       }
@@ -44,7 +45,7 @@ export class CocineroComponent implements OnInit {
   }
 
   actualizarPedidosEnPreparacion(){
-    this.empleadosService.VerPedidosPendientes(2).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(2, this.idSector).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidosEnPreparacion = respuesta.Pedidos;
       }
@@ -74,13 +75,16 @@ export class CocineroComponent implements OnInit {
   ngOnInit() {
     this.idCocinero = this.rutaActiva.snapshot.params.idCocinero;
     this.loginService.BuscarUsuario(this.idCocinero).subscribe(respuesta => {
-      if (respuesta.Estado == "Ok") {
+      if (respuesta.Estado == "Ok") {debugger
         this.nombreCocinero = respuesta.Usuario.usuario;
+        this.idSector = respuesta.Usuario.id_sector;
         this.foto = respuesta.Usuario.foto;
+
+        this.actualizarPedidosPendientes();
+        this.actualizarPedidosEnPreparacion();
       }
     })
-    this.actualizarPedidosPendientes();
-    this.actualizarPedidosEnPreparacion();
+
   }
 
   w3_open() {

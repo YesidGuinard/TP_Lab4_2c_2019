@@ -10,6 +10,7 @@ export class PedidosEnPreparacionComponent implements OnInit {
 
   @Output() enviarServirPedido = new EventEmitter<any>();
   @Input() pedidos; 
+  @Input() sectorId;
 
   constructor(private empleadoService: EmpleadosService) { }
 

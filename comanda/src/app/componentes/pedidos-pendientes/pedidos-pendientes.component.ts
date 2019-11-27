@@ -10,12 +10,13 @@ export class PedidosPendientesComponent implements OnInit {
 
   @Output() enviarSeTomoPedido = new EventEmitter<any>();
   @Input() pedidos;
+  @Input() sectorId;
   tiempoEstimado;
 
   constructor(private empleadosService: EmpleadosService) { }
 
   actualizarPedidosPendientes(){
-    this.empleadosService.VerPedidosPendientes(1).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(1, this.sectorId).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidos = respuesta.Pedidos;
       }

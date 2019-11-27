@@ -13,6 +13,7 @@ export class PasteleroComponent implements OnInit {
 
   idPastelero;
   nombrePastelero;
+  idSector;
   foto;
   pedidosPendientes = new Array<any>();
   pedidosEnPreparacion = new Array<any>();
@@ -33,7 +34,7 @@ export class PasteleroComponent implements OnInit {
   }
 
   actualizarPedidosPendientes(){
-    this.empleadosService.VerPedidosPendientes(1).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(1, this.idSector).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidosPendientes = respuesta.Pedidos;
       }
@@ -44,7 +45,7 @@ export class PasteleroComponent implements OnInit {
   }
 
   actualizarPedidosEnPreparacion(){
-    this.empleadosService.VerPedidosPendientes(2).subscribe(respuesta => {
+    this.empleadosService.VerPedidosPendientes(2, this.idSector).subscribe(respuesta => {
       if(respuesta.Estado == "Ok"){
         this.pedidosEnPreparacion = respuesta.Pedidos;
       }
@@ -75,11 +76,14 @@ export class PasteleroComponent implements OnInit {
     this.loginService.BuscarUsuario(this.idPastelero).subscribe(respuesta => {
       if (respuesta.Estado == "Ok") {
         this.nombrePastelero = respuesta.Usuario.usuario;
+        this.idSector = respuesta.Usuario.id_sector;
         this.foto = respuesta.Usuario.foto;
+
+        this.actualizarPedidosPendientes();
+        this.actualizarPedidosEnPreparacion();
       }
     })
-    this.actualizarPedidosPendientes();
-    this.actualizarPedidosEnPreparacion();
+
   }
 
   w3_open() {

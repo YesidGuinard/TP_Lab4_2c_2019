@@ -8,8 +8,8 @@ export class EmpleadosService {
 
   constructor(private miHttpService: MiHttpService) { }
 
-  VerPedidosPendientes(estadoPedido){
-    return this.miHttpService.httpGet1('pedido/pendientes/' + estadoPedido);
+  VerPedidosPendientes(estadoPedido, idSector){
+    return this.miHttpService.httpPost0('pedido/pendientes/', {'estadoPedido':estadoPedido, 'idSector':idSector});
   }
 
   TomarPedido(codigo, tiempoEstimado){
