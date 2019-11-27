@@ -33,7 +33,7 @@ export class LoginService {
   }
 
   AsignarTipoUsuario(idUsuario, idTipoUsuario){
-    return this.miHttpService.httpPost1('usuario/asignarTipo/', {'idUsuario':idUsuario, 'idTipoUsuario':idTipoUsuario});
+    return this.miHttpService.httpPost0('usuario/asignarTipo/', {'idUsuario':idUsuario, 'idTipoUsuario':idTipoUsuario});
   }
 
   loggedIn(){

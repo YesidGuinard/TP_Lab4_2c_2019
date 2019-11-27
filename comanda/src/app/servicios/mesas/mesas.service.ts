@@ -37,7 +37,7 @@ export class MesasService {
   }
 
   CambiarEstadoCerrarMesa(codigoMesa){
-    return this.miHttpService.httpPost1('/mesa/estado/cerrada/', {'codigo': codigoMesa});
+    return this.miHttpService.httpPost0('/mesa/estado/cerrada/', {'codigo': codigoMesa});
   }
 
   ObtenerClientesEnEspera(){

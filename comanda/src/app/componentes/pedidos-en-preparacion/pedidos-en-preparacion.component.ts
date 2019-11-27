@@ -14,8 +14,8 @@ export class PedidosEnPreparacionComponent implements OnInit {
 
   constructor(private empleadoService: EmpleadosService) { }
 
-  ServirPedido() {
-    this.empleadoService.ServirPedido().subscribe(respuesta => {
+  ServirPedido(codigo) {
+    this.empleadoService.ServirPedido(codigo).subscribe(respuesta => {
       if(respuesta.Estado == "Ok") {
         this.enviarServirPedido.emit(true);
       }

@@ -13,19 +13,13 @@ export class MiHttpService {
   private url = environment.apiUrl;
   
   public httpPost0( metodo: string, objeto: any): Observable<any> {
-    return this.http.post(this.url + metodo, objeto, {responseType: 'json'})
+    return this.http.post(this.url + metodo, JSON.stringify(objeto), {responseType: 'json'})
     .pipe(respuesta => respuesta)
   }
 
   public httpPost1( metodo: string, objeto: any): Observable<any> {
     var token = localStorage.getItem('token');
     return this.http.post(this.url + metodo, objeto, { headers: new HttpHeaders({'Content-Type':  'application/json', 'Authorization': token }) })
-    .pipe(respuesta => respuesta)
-  }
-
-  public httpPost2( metodo: string): Observable<any> {
-    var token = localStorage.getItem('token');
-    return this.http.post(this.url + metodo, {} ,{ headers: new HttpHeaders({'Content-Type':  'application/json', 'Authorization': token }) })
     .pipe(respuesta => respuesta)
   }
 

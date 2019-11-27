@@ -13,10 +13,10 @@ export class EmpleadosService {
   }
 
   TomarPedido(codigo, tiempoEstimado){
-    return this.miHttpService.httpPost1('pedido/tomar/', {'codigo': codigo, 'tiempoEstimado':tiempoEstimado});
+    return this.miHttpService.httpPost0('pedido/tomar/', {'codigo': codigo, 'tiempoEstimado':tiempoEstimado});
   }
 
-  ServirPedido() {
-    return this.miHttpService.httpPost2('pedido/servir/');
+  ServirPedido(codigo) {
+    return this.miHttpService.httpPost0('pedido/servir/', {'codigo':codigo});
   }
 }

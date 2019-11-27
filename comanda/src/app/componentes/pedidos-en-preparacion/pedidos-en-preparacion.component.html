@@ -31,7 +31,7 @@
                 <td>{{pedido.cantidad}}</td>
                 <td>{{pedido.codigo}}</td>
                 <td>{{pedido.mesa}}</td>
-                <td><button class="btn btn-primary" (click)="ServirPedido()">Servir</button></td>
+                <td><button class="btn btn-primary" (click)="ServirPedido(pedido.codigo)">Servir</button></td>
             </tr>
         </tbody>
     </table>
