@@ -97,3 +97,33 @@ Al mozo se le muestran las mesas a partir de que se asignan, y tiene que ir camb
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/mozoCambiarMesas.jpg)
 
+## PAGINA SOCIO
+
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/socio.jpg)
+
+
+## Asignar tipo de usuario
+Cuando los usuarios se registran, solo pueden asignar su nombre de usuario y clave. El socio asigna el tipo de usuario buscandolo por nombre de usuario.   
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/socioAsignar.jpg)
+
+
+## Estado de pedidos
+
+El socio puede ver los estados de todos los pedidos que no estan cerrados y filtrarlos por estado. 
+
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/socioEstadoPedidos.jpg)
+
+
+## Cerrar mesa
+
+Las mesas solo las puede cerrar un socio.
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/socioCerrarMesa.jpg)
+
+
+
+
+
