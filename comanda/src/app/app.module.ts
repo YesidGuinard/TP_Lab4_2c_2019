@@ -7,7 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './componentes/login/login.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { RecaptchaModule } from 'ng-recaptcha';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/socio/auth.guard';
+import { MozoGuard } from './guards/mozo/mozo.guard';
+import { CocineroGuard } from './guards/cocinero/cocinero.guard';
+import { BartenderGuard } from './guards/bartender/bartender.guard';
+import { CerveceroGuard } from './guards/cervecero/cervecero.guard';
+import { PasteleroGuard } from './guards/pastelero/pastelero.guard';
+import { ClienteGuard } from './guards/cliente/cliente.guard';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { GenerarPedidoComponent } from './componentes/generar-pedido/generar-pedido.component';
 import { ElegirMesaComponent } from './componentes/elegir-mesa/elegir-mesa.component';
@@ -64,7 +70,14 @@ import { CerrarMesaComponent } from './componentes/cerrar-mesa/cerrar-mesa.compo
     HttpClientModule,
     RecaptchaModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, 
+              MozoGuard,
+              CocineroGuard,
+              BartenderGuard,
+              CerveceroGuard,
+              PasteleroGuard,
+              ClienteGuard],             
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

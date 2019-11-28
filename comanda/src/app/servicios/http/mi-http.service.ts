@@ -11,6 +11,11 @@ export class MiHttpService {
   constructor(private http: HttpClient) { }
 
   private url = environment.apiUrl;
+
+  public httpPost( metodo: string, objeto: any): Observable<any> {
+    return this.http.post(this.url + metodo, objeto, {responseType: 'json'})
+    .pipe(respuesta => respuesta)
+  }
   
   public httpPost0( metodo: string, objeto: any): Observable<any> {
     return this.http.post(this.url + metodo, JSON.stringify(objeto), {responseType: 'json'})
