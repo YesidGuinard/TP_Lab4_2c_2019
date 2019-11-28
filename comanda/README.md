@@ -75,6 +75,7 @@ El mozo puede buscar un cliente por nombre de usuario para agregarlo a la lista 
 ## Agregar cliente a la lista de espera
 
 Puede agregar el cliente buscado a la lista de espera
+
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/mozoAgregarCliente.jpg)
 
 ## Cargar pedidos
