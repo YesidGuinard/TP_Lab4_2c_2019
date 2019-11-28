@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let producto of productosCocina" app-vegetariano [productoVeg]="producto">
+            <tr *ngFor="let producto of productosCocina  | ordenar" app-vegetariano [productoVeg]="producto">
             </tr>
         </tbody>
     </table>
@@ -50,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let producto of vinos">
+            <tr *ngFor="let producto of vinos | ordenar">
                 <td>{{producto.nombre}}</td>
                 <td>$ {{producto.precio}}</td>
                 <td app-calorias [calorias] = "producto.calorias"></td>
@@ -74,7 +74,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let producto of cervezas">
+            <tr *ngFor="let producto of cervezas | ordenar ">
                 <td>{{producto.nombre}}</td>
                 <td>$ {{producto.precio}}</td>
                 <td app-calorias [calorias] = "producto.calorias"></td>
@@ -98,7 +98,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let producto of postres">
+            <tr *ngFor="let producto of postres | ordenar">
                 <td>{{producto.nombre}}</td>
                 <td>$ {{producto.precio}}</td>
                 <td app-calorias [calorias] = "producto.calorias"></td>

@@ -40,6 +40,7 @@ import { VegetarianoComponent } from './directivas/vegetariano/vegetariano.compo
 import { CaloriasComponent } from './directivas/calorias/calorias.component';
 import { EstadoPipe } from './pipes/estado.pipe';
 import { EstadoPedidosAdminComponent } from './componentes/estado-pedidos-admin/estado-pedidos-admin.component';
+import { OrdenarPipe } from './pipes/ordenar/ordenar.pipe';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { EstadoPedidosAdminComponent } from './componentes/estado-pedidos-admin/
     CaloriasComponent,
     EstadoPipe,
     EstadoPedidosAdminComponent,
+    OrdenarPipe,
   ],
   imports: [
     BrowserModule,
