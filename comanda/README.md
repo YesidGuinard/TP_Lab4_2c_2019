@@ -9,7 +9,7 @@ Logueo con nombre de usuario y clave
 
 ## Registro de usuario
 
-Registro de usuario ingresando nombre de usuario, clave y foto. 
+Registro de usuario ingresando nombre de usuario, clave, foto. Incluye recaptcha de google. 
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/registro.jpg)
 
@@ -36,7 +36,7 @@ Una vez en la lista de espera, el mozo debe asignarle una mesa. En la página de
 
 ## Lista de precios
 
-El cliente puede ver el listado de productos, si son aptos para vegetarianos y el contenido calórico.
+El cliente puede ver el listado de productos, sus precios, si son aptos para vegetarianos y el contenido calórico.
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/precios.jpg)
 
@@ -53,6 +53,7 @@ Una vez que tiene asignada una mesa, el cliente puede cargar una encuesta de sat
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/encuesta.jpg)
 
 ## PAGINA MOZO
+Tareas que puede realizar un mozo: Asignar mesa a clientes en espera, buscar clientes por nombre de usuario, agregar clientes a la lista de espera, atender a un cliente (cargar pedidos), cambiar el estado de las mesas.
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/mozo.jpg)
 
@@ -99,6 +100,7 @@ Al mozo se le muestran las mesas a partir de que se asignan, y tiene que ir camb
 
 ## PAGINA SOCIO
 
+Tareas que puede realizar un socio: Asignar un tipo de usuario a los usuarios registrados, ver el estado de todos los pedidos que no estan cerrados y filtrarlos por estado, cerrar mesas.
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/socio.jpg)
 
