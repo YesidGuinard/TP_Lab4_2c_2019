@@ -1,5 +1,5 @@
 # Comanda
-https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagen1.jpg
+(https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagen1.jpg)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.10.
 
 ## Development server
