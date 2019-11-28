@@ -93,7 +93,7 @@ Las mesas tienen 5 estados:
 - Mesa con clientes pagando
 - Mesa cerrada
 
-Al mozo se le muestran las mesas a partir de que se asignan, y tiene que ir cambiando el estado de la mesa al proximo estado a medida que éstos se van cumpliendo 
+Al mozo se le muestran las mesas a partir de que se asignan, y tiene que ir cambiando el estado de la mesa al proximo estado a medida que éstos se van cumpliendo. Luego de pasar la mesa al siguiente estado de clientes comiendo, se cierra el ciclo del mozo, ya que el último paso, que es cerrar la mesa, solo puede hacerlo un socio 
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/mozoCambiarMesas.jpg)
 
