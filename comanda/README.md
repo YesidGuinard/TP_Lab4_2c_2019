@@ -1,14 +1,17 @@
 # Comanda
  ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagen1.jpg)
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.10.
 
-## Development server
+## Login
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Logueo con nombre de usuario y clave
 
-## Code scaffolding
+ ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/login.jpg)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Registro de usuario
+
+Registro de usuario ingresando nombre de usuario, clave y foto. 
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/registro.jpg)
 
 ## Build
 
