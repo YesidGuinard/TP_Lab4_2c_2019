@@ -35,6 +35,9 @@ import { PedidosEnPreparacionComponent } from './componentes/pedidos-en-preparac
 import { TomarPedidoComponent } from './directivas/tomar-pedido/tomar-pedido.component';
 import { AsignarTipoUsuarioComponent } from './componentes/asignar-tipo-usuario/asignar-tipo-usuario.component';
 import { CerrarMesaComponent } from './componentes/cerrar-mesa/cerrar-mesa.component';
+import { ListadoPreciosComponent } from './componentes/listado-precios/listado-precios.component';
+import { VegetarianoComponent } from './directivas/vegetariano/vegetariano.component';
+import { CaloriasComponent } from './directivas/calorias/calorias.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { CerrarMesaComponent } from './componentes/cerrar-mesa/cerrar-mesa.compo
     PedidosEnPreparacionComponent,
     TomarPedidoComponent,
     AsignarTipoUsuarioComponent,
-    CerrarMesaComponent
+    CerrarMesaComponent,
+    ListadoPreciosComponent,
+    VegetarianoComponent,
+    CaloriasComponent,
   ],
   imports: [
     BrowserModule,

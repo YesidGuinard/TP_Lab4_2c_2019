@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Lista de precios</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>Consulte todos nuestros productos y precios,
+                platos vegetarianos y contenido calórico</p>
+            <button type="button" class="btn btn-primary" (click)="verListaPrecios()">Ver lista de precios</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="verLista" style="margin-top: 2%;">
+    <div class="row">
+        <div class="col-12">
+            <h3>Platos principales</h3>
+            <p>Los aptos vegetarianos se muestran en verde</p>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Valor calórico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productosCocina" app-vegetariano [productoVeg]="producto">
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="verLista">
+    <div class="row">
+        <div class="col-12">
+            <h3>Vinos y tragos</h3>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Valor calórico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of vinos">
+                <td>{{producto.nombre}}</td>
+                <td>$ {{producto.precio}}</td>
+                <td app-calorias [calorias] = "producto.calorias"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="verLista">
+    <div class="row">
+        <div class="col-12">
+            <h3>Cervezas</h3>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Valor calórico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of cervezas">
+                <td>{{producto.nombre}}</td>
+                <td>$ {{producto.precio}}</td>
+                <td app-calorias [calorias] = "producto.calorias"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container" *ngIf="verLista">
+    <div class="row">
+        <div class="col-12">
+            <h3>Postres</h3>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Valor calórico</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of postres">
+                <td>{{producto.nombre}}</td>
+                <td>$ {{producto.precio}}</td>
+                <td app-calorias [calorias] = "producto.calorias"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top: 2%; margin-left: 2%;" *ngIf="verLista">
+    <button type="button" class="btn btn-primary" (click)="ocultar()">Ocultar</button>
+</div>
+
+<hr>
