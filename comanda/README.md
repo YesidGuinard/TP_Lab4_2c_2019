@@ -34,10 +34,24 @@ Una vez en la lista de espera, el mozo debe asignarle una mesa. En la página de
 
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/clienteActualizar.jpg)
 
-## Running end-to-end tests
+## Lista de precios
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+El cliente puede ver el listado de productos, si son aptos para vegetarianos y el contenido calórico.
 
-## Further help
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/precios.jpg)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Estado de pedidos
+
+Seleccionando su pedido, el cliente puede hacer el seguimiento del estado en el que se encuentra su pedido
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/estadoPedido.jpg)
+
+## Encuesta
+
+Una vez que tiene asignada una mesa, el cliente puede cargar una encuesta de satisfaccion
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/encuesta.jpg)
+
+
+
+
