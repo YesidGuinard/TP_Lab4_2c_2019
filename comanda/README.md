@@ -124,6 +124,31 @@ Las mesas solo las puede cerrar un socio.
 ![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/socioCerrarMesa.jpg)
 
 
+## PAGINA EMPLEADOS
+
+Los empleados: Cocinero, Bartender, Cervecero y Pastelero pueden acceder a las mimas acciones:
+
+Ver los pedidos pendientes y tomarlos para su preparacion y ver los pedidos en preparacion y servirlos. 
+
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/empleado.jpg)
+
+
+## Pedidos pendientes
+
+El empleado puede tomar un pedido de la lista de pedidos pendientes, asignandole primero un tiempo estimado de preparación (en minutos)
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/empleadoPendientes.jpg)
+
+
+## Pedidos en preparacion
+
+El empleado puede tomar un pedido de la lista de pedidos en preparación y ponerlo para servir.
+
+![alt text](https://github.com/seba0413/TP_Lab4_2c_2019/blob/master/imagenes/empleadoPreparacion.jpg)
+
+
+
 
 
 
