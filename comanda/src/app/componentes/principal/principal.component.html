@@ -28,12 +28,12 @@
       <h4><b>Nombre de usuario: {{nombreAdmin}}</b></h4>
     </div>
     <div class="w3-bar-block">
-      <a href="/principal/{{idAdmin}}#asignarTipoUsuario" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-th-large fa-fw w3-margin-right"></i>ASIGNAR TIPO USUARIO</a>
+      <a href="/principal/{{idAdmin}}#asignarTipoUsuario" (click)="w3_close()" class="w3-bar-item w3-button w3-padding">
+        <i class="fa fa-th-large fa-fw w3-margin-right"></i>ASIGNAR TIPO USUARIO</a>
+      <a href="/principal/{{idAdmin}}#estado" (click)="w3_close()" class="w3-bar-item w3-button w3-padding">
+        <i class="fa fa-th-large fa-fw w3-margin-right"></i>VER ESTADO DE PEDIDOS</a>
       <a href="/principal/{{idAdmin}}#cerrarMesa" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
           class="fa fa-th-large fa-fw w3-margin-right"></i>CERRAR MESA</a>
-      <!-- <a href="/principal/{{idAdmin}}#agregarListaEspera" (click)="w3_close()" class="w3-bar-item w3-button w3-padding"><i
-          class="fa fa-th-large fa-fw w3-margin-right"></i>AGREGAR A LISTA DE ESPERA</a> -->
       <a class="w3-bar-item w3-button w3-padding" style="margin-top: 20%;" (click)="cerrarSesion()"> <i
           class="fa fa-th-large fa-fw w3-margin-right"></i>CERRAR SESION</a>
     </div>
@@ -48,7 +48,8 @@
 
     <!-- Header -->
     <header id="titulo">
-      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i class="fa fa-bars"></i></span>
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" (click)="w3_open()"><i
+          class="fa fa-bars"></i></span>
       <div class="w3-container">
         <h1><b>Gestion de pedidos</b></h1>
       </div>
@@ -56,6 +57,9 @@
 
     <!-- Asignar tipo de usuario -->
     <app-asignar-tipo-usuario id="asignarTipoUsuario"></app-asignar-tipo-usuario>
+
+    <!-- Estado pedidos -->
+    <app-estado-pedidos-admin id="estado"></app-estado-pedidos-admin>
 
     <!-- Cerrar mesa -->
     <app-cerrar-mesa id="cerrarMesa"></app-cerrar-mesa>

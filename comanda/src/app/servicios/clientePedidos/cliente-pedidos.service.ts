@@ -25,8 +25,8 @@ export class ClientePedidosService {
     return this.miHttpService.httpGet0('pedido/postre/');
   }
 
-  getTodosLosProductos(){
-    return this.miHttpService.httpGet0('productos/');
+  getTodosLosPedidosConEstado(){
+    return this.miHttpService.httpGet0('pedidos/estado/');
   }
 
   generarPedido(pedido: Pedido) {

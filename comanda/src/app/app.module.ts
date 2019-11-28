@@ -38,6 +38,8 @@ import { CerrarMesaComponent } from './componentes/cerrar-mesa/cerrar-mesa.compo
 import { ListadoPreciosComponent } from './componentes/listado-precios/listado-precios.component';
 import { VegetarianoComponent } from './directivas/vegetariano/vegetariano.component';
 import { CaloriasComponent } from './directivas/calorias/calorias.component';
+import { EstadoPipe } from './pipes/estado.pipe';
+import { EstadoPedidosAdminComponent } from './componentes/estado-pedidos-admin/estado-pedidos-admin.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { CaloriasComponent } from './directivas/calorias/calorias.component';
     ListadoPreciosComponent,
     VegetarianoComponent,
     CaloriasComponent,
+    EstadoPipe,
+    EstadoPedidosAdminComponent,
   ],
   imports: [
     BrowserModule,

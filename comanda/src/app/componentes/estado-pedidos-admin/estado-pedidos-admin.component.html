@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Estado de pedidos</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>Consultar el estado de todos los pedidos</p>
+            <button type="button" class="btn btn-primary" (click)="verListaPedidos()">Ver pedidos</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="verLista" style="margin-top: 2%;">
+    <div class="row">
+        <div class="col-12">
+            <input type="text" class="form-control" name="filtroEstado" placeholder="Filtrar pedidos por estado" [(ngModel)] = "filtroEstado">
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Pedido</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of listaPedidos | estado: filtroEstado">
+                <td>{{pedido.codigo}}</td>
+                <td>{{pedido.id_mesa}}</td>
+                <td>{{pedido.nombre}}</td>
+                <td>{{pedido.estado}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" (click) ="ocultarLista()">Ocultar</button>
+        </div>
+    </div>
+
+</div>
+
+<hr>
