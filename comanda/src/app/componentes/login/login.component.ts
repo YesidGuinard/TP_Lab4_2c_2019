@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   empleado: Empleado;
   nuevoUsuario: Empleado; 
   respuesta: any;
-  listaTiposDeEmpleado: Array<any>;
+  listaDeUsuarios: Array<any>;
   habilitarBotonRegistro: boolean = false; 
   jwtDecoder: JwtHelperService = new JwtHelperService();
   selectedFile = null; 
@@ -32,35 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   cargarUsuario(usuario){
-    switch(usuario){
-      case 'socio':
-        this.empleado.usuario = "socio";
-        this.empleado.clave = "socio";
-      break;
-      case 'mozo':
-        this.empleado.usuario = "mozo";
-        this.empleado.clave = "mozo";
-      break;
-      case 'cocinero':
-          this.empleado.usuario = "cocinero";
-          this.empleado.clave = "cocinero";
-      break;
-      case 'bartender':
-          this.empleado.usuario = "bartender";
-          this.empleado.clave = "bartender";
-      break;
-      case 'cervecero':
-          this.empleado.usuario = "cervecero";
-          this.empleado.clave = "cervecero";
-      break;
-      case 'pastelero':
-          this.empleado.usuario = "pastelero";
-          this.empleado.clave = "pastelero";
-      break;
-      case 'cliente':
-        this.empleado.usuario = "cliente";
-        this.empleado.clave = "cliente";
-    break;
+    for(const persona of this.listaDeUsuarios){
+      if(persona.usuario == usuario){
+        this.empleado.usuario = usuario; 
+        this.empleado.clave = persona.clave; 
+        break;
+      }
     }
   }
 
@@ -177,7 +154,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginService.ObtenerTiposDeEmpleados().subscribe(respuesta => 
-      this.listaTiposDeEmpleado = respuesta );
+    this.loginService.ObtenerListaDeUsuarios().subscribe(respuesta => {
+      this.listaDeUsuarios = respuesta; 
+    })
   }
 }

@@ -25,6 +25,10 @@ export class LoginService {
     return this.miHttpService.httpGet0('tiposDeEmpleado/');
   }
 
+  ObtenerListaDeUsuarios(){
+    return this.miHttpService.httpGet0('usuarios/');
+  }
+
   GuardarFoto(foto){
     return this.miHttpService.httpPostGuardarFoto('/usuario/foto/', foto);
   }

@@ -71,10 +71,10 @@
         </label>
       </div>
       <div class="form-group input">
-        <label class="control-label" for="tipos">Tipo Empleado: </label>
-        <select id="tipos" class="form-control col-lg-10" (change)="cargarUsuario($event.target.value)">
+        <label class="control-label" for="tipos">Usuarios </label>
+        <select id="usuarios" class="form-control col-lg-10" (change)="cargarUsuario($event.target.value)">
           <option selected>Seleccione Usuario</option>
-          <option [value]="tipo.tipoEmpleado" *ngFor="let tipo of listaTiposDeEmpleado">{{tipo.tipoEmpleado}}</option>
+          <option [value]="persona.usuario" *ngFor="let persona of listaDeUsuarios">{{persona.usuario}}</option>
         </select>
       </div>
       <div class="form-group input">
